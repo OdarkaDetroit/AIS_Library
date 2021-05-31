@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-Library",
+      "appliesTo": "Library/",
+      "type": "launch"
+    }
+  ]
+}
