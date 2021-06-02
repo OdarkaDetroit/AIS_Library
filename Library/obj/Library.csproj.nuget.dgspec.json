@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj": {}
+    "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj": {
+    "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj",
+        "projectUniqueName": "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj",
+        "projectPath": "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj",
         "packagesPath": "C:\\Users\\dasha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\obj\\",
+        "outputPath": "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\AIS_Library\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dasha\\AppData\\Roaming\\NuGet\\NuGet.Config",
