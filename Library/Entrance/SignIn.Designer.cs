@@ -36,14 +36,17 @@ namespace Library.Entrance
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.registrateButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(185, 95);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(86, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 20);
+            this.label1.Size = new System.Drawing.Size(375, 41);
             this.label1.TabIndex = 0;
             this.label1.Text = "Вхід до облікового запису";
             // 
@@ -57,6 +60,7 @@ namespace Library.Entrance
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Location = new System.Drawing.Point(138, 154);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(140, 20);
@@ -66,6 +70,7 @@ namespace Library.Entrance
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label3.Location = new System.Drawing.Point(138, 231);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 20);
@@ -81,21 +86,33 @@ namespace Library.Entrance
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Beige;
             this.button1.Location = new System.Drawing.Point(200, 351);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 55);
             this.button1.TabIndex = 5;
             this.button1.Text = "Увійти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // registrateButton
             // 
+            this.registrateButton.BackColor = System.Drawing.Color.PowderBlue;
             this.registrateButton.Location = new System.Drawing.Point(200, 428);
             this.registrateButton.Name = "registrateButton";
             this.registrateButton.Size = new System.Drawing.Size(148, 55);
             this.registrateButton.TabIndex = 6;
             this.registrateButton.Text = "Зареєструватися";
-            this.registrateButton.UseVisualStyleBackColor = true;
+            this.registrateButton.UseVisualStyleBackColor = false;
+            this.registrateButton.Click += new System.EventHandler(this.registrateButton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(555, 536);
+            this.panel1.TabIndex = 7;
             // 
             // SignIn
             // 
@@ -108,9 +125,11 @@ namespace Library.Entrance
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
             this.Name = "SignIn";
             this.Text = "SignIn";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +144,6 @@ namespace Library.Entrance
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button registrateButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }

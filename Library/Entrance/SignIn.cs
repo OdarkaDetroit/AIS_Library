@@ -14,5 +14,11 @@ namespace Library.Entrance
         {
             InitializeComponent();
         }
+
+        private void registrateButton_Click(object sender, EventArgs e)
+        {
+            _ = new SignUp { Visible = true };
+            Visible = false;
+        }
     }
 }
