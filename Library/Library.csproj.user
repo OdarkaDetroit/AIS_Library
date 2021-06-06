@@ -19,6 +19,9 @@
     <Compile Update="User\UserMain.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="User\ViewAuthors.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="User\ViewBooks.cs">
       <SubType>Form</SubType>
     </Compile>

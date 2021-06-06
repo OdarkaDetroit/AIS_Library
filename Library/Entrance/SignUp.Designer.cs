@@ -56,6 +56,8 @@ namespace Library
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -284,10 +286,20 @@ namespace Library
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel4.Controls.Add(this.button1);
             this.panel4.Location = new System.Drawing.Point(9, 12);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(667, 594);
             this.panel4.TabIndex = 19;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(446, 519);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 50);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Зареєструватися";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // SignUp
             // 
@@ -323,6 +335,7 @@ namespace Library
             this.Controls.Add(this.panel4);
             this.Name = "SignUp";
             this.Text = "Form2";
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,5 +370,6 @@ namespace Library
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button1;
     }
 }

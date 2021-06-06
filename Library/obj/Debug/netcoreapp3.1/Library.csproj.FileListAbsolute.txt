@@ -59,3 +59,4 @@ C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcorea
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.AddBook.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.BookRegistration.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.WorkerMain.resources
+C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.SignIn.resources

@@ -33,15 +33,19 @@ namespace Library
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(58, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 40);
+            this.label1.Size = new System.Drawing.Size(186, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Перегляд примірників\r\nдля книги\r\n";
             // 
@@ -66,10 +70,20 @@ namespace Library
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 426);
             this.panel1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(46, 341);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 50);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Повернутися до меню";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // ViewBooks
             // 
@@ -83,6 +97,7 @@ namespace Library
             this.Name = "ViewBooks";
             this.Text = "ViewBooks";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,5 +109,6 @@ namespace Library
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
     }
 }
