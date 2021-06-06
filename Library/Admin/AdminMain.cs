@@ -6,21 +6,21 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Library
+namespace Library.Admin
 {
-    public partial class SignIn : Form
+    public partial class AdminMain : Form
     {
-        public SignIn()
+        public AdminMain()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void AdminMain_Load(object sender, EventArgs e)
         {
 
         }

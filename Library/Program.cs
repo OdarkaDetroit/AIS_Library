@@ -17,7 +17,7 @@ namespace Library
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserMain());
+            Application.Run(new SignIn());
         }
     }
 }

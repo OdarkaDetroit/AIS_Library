@@ -54,3 +54,8 @@ C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcorea
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.UserMain.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.ViewBooks.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.ViewGenre.resources
+C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Admin.AdminMain.resources
+C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Admin.PriceControl.resources
+C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.AddBook.resources
+C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.BookRegistration.resources
+C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.WorkerMain.resources
