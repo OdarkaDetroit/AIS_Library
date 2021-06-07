@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.User;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,12 +24,19 @@ namespace Library
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            _ = new ViewBooks { Visible = true };
+            Visible = false;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // рядочок *клік* виділення значення 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _ = new ViewAuthors { Visible = true };
+            Visible = false;
         }
     }
 }

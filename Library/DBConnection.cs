@@ -35,7 +35,7 @@ namespace Library
                                + "password=" + password + ";"
                                + "database=" + database);
 
-        /*private MySqlConnection connection = new MySqlConnection("server=" + server
+      /*  private MySqlConnection connection = new MySqlConnection("server=" + server
                        + ";port=" + port
                        + ";user id=" + username + ";"
                        + "password=" + password1 + ";"

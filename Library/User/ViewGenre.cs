@@ -9,15 +9,15 @@ using System.Windows.Forms;
 
 namespace Library
 {
-  
+
     public partial class ViewGenre : Form
     {
-     
+
         public ViewGenre()
         {
             InitializeComponent();
             DBConnection d = new DBConnection();
-          
+
             string query = "SELECT * FROM system_catalogue";
             MySqlCommand sqlCommand = new MySqlCommand(query, d.getConnection());
             d.openConnection();
@@ -43,8 +43,8 @@ namespace Library
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
-                "SELECT catalogue_name FROM system_catalogue", db.getConnection()) ;
-           
+                "SELECT catalogue_name FROM system_catalogue", db.getConnection());
+
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
             dataGridView1.DataSource = dataSet.Tables[0];
@@ -52,7 +52,8 @@ namespace Library
             db.closeConnection();
         }
 
-       
+
+
     }
 
 
