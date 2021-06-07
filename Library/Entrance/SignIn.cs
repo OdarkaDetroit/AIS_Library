@@ -11,22 +11,6 @@ namespace Library.Entrance
 {
     public partial class SignIn : Form
     {
-        //MySqlConnection sqlCon = new MySqlConnection();
-
-        //DataTable sqlDt1 = new DataTable();
-
-        //MySqlDataReader sqlRd1;
-
-        //MySqlDataAdapter DtA = new MySqlDataAdapter();
-
-        //DataSet DS = new DataSet();
-
-        //String server = "localhost";
-        //String username = "root";
-        //String password = "u8s8jDddds2_0";
-        //String database = "lib";
-
-
 
         public SignIn()
         {
@@ -37,6 +21,32 @@ namespace Library.Entrance
         {
             _ = new SignUp { Visible = true };
             Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DBConnection db = new DBConnection();
+
+            String email = textBox1.Text;
+            String password = textBox2.Text;
+
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand sqlCom1 = new MySqlCommand("SELECT * FROM 'reader' WHERE 'email' = @eml AND 'password' = @pass", db.getConnection());
+
+            sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
+            sqlCom1.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
+
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Успіх!");
+            }
+            else
+            {
+                MessageBox.Show("Такий користувач не існує");
+            }
         }
     }
 }

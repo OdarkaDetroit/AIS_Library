@@ -48,8 +48,6 @@ C:\Users\dasha\Source\Repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcorea
 C:\Users\dasha\Source\Repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.dll
 C:\Users\dasha\Source\Repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.pdb
 C:\Users\dasha\Source\Repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.genruntimeconfig.cache
-C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.AddBook.resources
-C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.SignIn.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.SignUp.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.UserMain.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.ViewBooks.resources
@@ -60,3 +58,4 @@ C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcorea
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.BookRegistration.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.WorkerMain.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.SignIn.resources
+C:\Users\dasha\source\repos\OdarkaDetroit\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.ViewAuthors.resources

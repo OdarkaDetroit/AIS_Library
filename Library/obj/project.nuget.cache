@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ymDqvupv6A1zcL1r89JgqP2h8TWMW84m4A6Wf7hHrlHTRr1ZQ8IQUEm2LueYjGDWUqtGK/8Q2L7zEJst52iZiQ==",
+  "dgSpecHash": "IhII7+OmDa7btBE+jPCqZtb4sTXBDDy8dzjFrZo5jYzfd1y0LcqXbqjtJpGVsK4fO65+jvzb6G00RUisl8O/3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj",
+  "projectFilePath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dasha\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\dasha\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",

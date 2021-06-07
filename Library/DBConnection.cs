@@ -10,11 +10,13 @@ namespace Library
     {
         static String server = "localhost";
         static String username = "root";
+        static String port = "3306";
         static String password = "u8s8jDddds2_0";
         static String database = "lib";
 
-        private MySqlConnection connection = new MySqlConnection("server=" + server + ";"
-                               + "user id=" + username + ";"
+        private MySqlConnection connection = new MySqlConnection("server=" + server 
+                               + ";port=" + port
+                               + ";user id=" + username + ";"
                                + "password=" + password + ";"
                                + "database=" + database);
 
@@ -23,7 +25,6 @@ namespace Library
         {
             return connection;
         }
-
 
 
         //openinig connection function
