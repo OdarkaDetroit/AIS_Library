@@ -25,19 +25,19 @@ namespace Library
             db.openConnection();
 
 
-            String secname = textBox1.Text;
-            String firname = textBox2.Text;
-            String thirname = textBox3.Text;
+            string secname = textBox1.Text;
+            string firname = textBox2.Text;
+            string thirname = textBox3.Text;
 
-            String city = textBox4.Text;
-            String street = textBox5.Text;
-            String house = textBox6.Text;
-            String flat = textBox7.Text;
-            String workplace = textBox8.Text;
+            string city = textBox4.Text;
+            string street = textBox5.Text;
+            string house = textBox6.Text;
+            string flat = textBox7.Text;
+            string workplace = textBox8.Text;
 
-            String bdate = dateTimePicker1.Text;
-            String email = textBox9.Text;
-            String pass = textBox10.Text;
+            string bdate = dateTimePicker1.Text;
+            string email = textBox9.Text;
+            string pass = textBox10.Text;
 
             MySqlCommand command =
                 new MySqlCommand("INSERT INTO reader (sec_name, fir_name, third_name, " +
@@ -81,7 +81,7 @@ namespace Library
             command.Parameters.AddWithValue("@pssw", pass);
 
 
-        
+
             //command.Parameters.Add("@sname", MySqlDbType.VarChar).Value = secname;
             //command.Parameters.Add("@fname", MySqlDbType.VarChar).Value = firname;
 
@@ -107,7 +107,7 @@ namespace Library
             //command.Parameters.Add("@brthd", MySqlDbType.Date).Value = bdate;
             //command.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
             //command.Parameters.Add("@pssw", MySqlDbType.VarChar).Value = pass;
-        
+
 
 
             if (CheckEmail())

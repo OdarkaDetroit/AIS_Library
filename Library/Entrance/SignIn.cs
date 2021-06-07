@@ -18,8 +18,8 @@ namespace Library.Entrance
         //public enum AccessBD { "User", "Librarian", "Administrator" }
         ///public List<string> Roles { get; set; } = new List<string> { "User", "Librarian", "Administrator" };
         
-        public static String emailParam;
-        private String accessParam;
+        public static string emailParam;
+        private string accessParam;
 
         public SignIn()
         {
@@ -39,8 +39,8 @@ namespace Library.Entrance
             // Сonnection is opened
             db.openConnection();
 
-            String email = textBox1.Text;
-            String password = textBox2.Text;
+            string email = textBox1.Text;
+            string password = textBox2.Text;
 
             //DataTable table = new DataTable();
 
