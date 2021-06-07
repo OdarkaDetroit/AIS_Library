@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\AIS_Library\\Library\\Library.csproj": {}
+    "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj": {}
   },
   "projects": {
-    "C:\\AIS_Library\\Library\\Library.csproj": {
+    "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\AIS_Library\\Library\\Library.csproj",
+        "projectUniqueName": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "C:\\AIS_Library\\Library\\Library.csproj",
-        "packagesPath": "C:\\Users\\Владелец\\.nuget\\packages\\",
-        "outputPath": "C:\\AIS_Library\\Library\\obj\\",
+        "projectPath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\Library.csproj",
+        "packagesPath": "C:\\Users\\dasha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\AIS_Library\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Владелец\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dasha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +43,10 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.24, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[1.3.9, )"
             }
           },
           "imports": [
@@ -63,7 +67,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

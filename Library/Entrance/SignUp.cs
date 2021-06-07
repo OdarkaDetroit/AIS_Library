@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using Library.Entrance;
 
 namespace Library
 {
@@ -24,6 +24,7 @@ namespace Library
             DBConnection db = new DBConnection();
             db.openConnection();
 
+
             String secname = textBox1.Text;
             String firname = textBox2.Text;
             String thirname = textBox3.Text;
@@ -39,37 +40,103 @@ namespace Library
             String pass = textBox10.Text;
 
             MySqlCommand command =
-                new MySqlCommand("INSERT INTO 'reader' VALUES " +
-                "(@sname, @fname, @tname, @cit, @str, @hos, @flt, @wrk, @brthd, @eml, @pssw)");
+                new MySqlCommand("INSERT INTO reader (sec_name, fir_name, third_name, " +
+                "city, street, house, flat, workplace, birth_date, email, password, accessibility) VALUES " +
+                "(@sname, @fname, @tname, @cit, @str, @hos, @flt, @wrk, @brthd, @eml, @pssw, 'User')", db.getConnection());
 
-            command.Parameters.Add("@sname", MySqlDbType.VarChar).Value = secname;
-            command.Parameters.Add("@fname", MySqlDbType.VarChar).Value = firname;
-            command.Parameters.Add("@tname", MySqlDbType.VarChar).Value = thirname;
-            command.Parameters.Add("@cit", MySqlDbType.VarChar).Value = city;
-            command.Parameters.Add("@str", MySqlDbType.VarChar).Value = street;
-            command.Parameters.Add("@hos", MySqlDbType.VarChar).Value = house;
-            command.Parameters.Add("@flt", MySqlDbType.VarChar).Value = flat;
-            command.Parameters.Add("@wrk", MySqlDbType.VarChar).Value = workplace;
-            command.Parameters.Add("@brthd", MySqlDbType.VarChar).Value = bdate;
-            command.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
-            command.Parameters.Add("@pssw", MySqlDbType.VarChar).Value = pass;
+            //MySqlCommand command =
+            //    new MySqlCommand("INSERT INTO reader (sec_name, fir_name, third_name, " +
+            //    "city, street, house, flat, workplace, birth_date, email, password, accessibility) VALUES " +
+            //    "(@sec_name, @fir_name, @third_name, @city, @street, @house, @flat, @workplace, @birth_date, @email, @password, 'User')", db.getConnection());
 
 
+            MySqlDataReader reader = command.ExecuteReader();
 
-            if(CheckEmail())
+            command.Prepare();
+
+            command.Parameters.AddWithValue("@sname", secname);
+            command.Parameters.AddWithValue("@fname", firname);
+
+            if (thirname != "")
+                command.Parameters.AddWithValue("@tname", thirname);
+            else
+                command.Parameters.AddWithValue("@tname", DBNull.Value);
+
+            command.Parameters.AddWithValue("@cit", city);
+            command.Parameters.AddWithValue("@str", street);
+            command.Parameters.AddWithValue("@hos", house);
+
+            if (flat != "")
+                command.Parameters.AddWithValue("@flt", flat);
+            else
+                command.Parameters.AddWithValue("@flt", DBNull.Value);
+
+            if (workplace != "")
+                command.Parameters.AddWithValue("@wrk", workplace);
+            else
+                command.Parameters.AddWithValue("@wrk", DBNull.Value);
+
+            command.Parameters.AddWithValue("@brthd", bdate);
+            command.Parameters.AddWithValue("@eml", email);
+            command.Parameters.AddWithValue("@pssw", pass);
+
+
+        
+            //command.Parameters.Add("@sname", MySqlDbType.VarChar).Value = secname;
+            //command.Parameters.Add("@fname", MySqlDbType.VarChar).Value = firname;
+
+            //if (thirname != "")
+            //    command.Parameters.Add("@tname", MySqlDbType.VarChar).Value = thirname;
+            //else
+            //    command.Parameters.AddWithValue("@tname", DBNull.Value);
+
+            //command.Parameters.Add("@cit", MySqlDbType.VarChar).Value = city;
+            //command.Parameters.Add("@str", MySqlDbType.VarChar).Value = street;
+            //command.Parameters.Add("@hos", MySqlDbType.VarChar).Value = house;
+
+            //if (flat != "")
+            //    command.Parameters.Add("@flt", MySqlDbType.Int32).Value = flat;
+            //else
+            //    command.Parameters.AddWithValue("@flt", DBNull.Value);
+
+            //if (workplace != "")
+            //    command.Parameters.Add("@wrk", MySqlDbType.VarChar).Value = workplace;
+            //else
+            //    command.Parameters.AddWithValue("@wrk", DBNull.Value);
+
+            //command.Parameters.Add("@brthd", MySqlDbType.Date).Value = bdate;
+            //command.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
+            //command.Parameters.Add("@pssw", MySqlDbType.VarChar).Value = pass;
+        
+
+
+            if (CheckEmail())
             {
                 MessageBox.Show("Ця електронна скринька вже використовується");
             }
             else
             {
-                if (command.ExecuteNonQuery() == 1)
+                if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text)
+                    || string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text)
+                    || string.IsNullOrWhiteSpace(textBox6.Text) || string.IsNullOrWhiteSpace(dateTimePicker1.Text)
+                    || string.IsNullOrWhiteSpace(textBox9.Text) || string.IsNullOrWhiteSpace(textBox10.Text))
+                {
+                    MessageBox.Show("Акаунт не створено - не всі необхідні дані надані");
+                }
+                else if (command.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Створено акаунт!");
+                    while(reader.Read())
+                    {
+                        _ = new UserMain { Visible = true };
+                        Visible = false;
+                    }
+
                 }
-                else
-                {
-                    MessageBox.Show("Акаунт не створено");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Акаунт не створено");
+                //}
             }
 
             db.closeConnection();
@@ -99,25 +166,34 @@ namespace Library
         {
             DBConnection db1 = new DBConnection();
 
+            db1.openConnection();
+
             String email = textBox9.Text;
 
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand sqlCom1 = new MySqlCommand("SELECT * FROM 'reader' WHERE 'email' = @eml", db1.getConnection());
+            //DataTable table = new DataTable();
+            //MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
+            MySqlCommand sqlCom2 = new MySqlCommand($"SELECT * FROM reader WHERE email = '{email}'", db1.getConnection());
 
-            adapter.Fill(table);
+            //sqlCom2.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
+
+            //adapter.Fill(table);
+            MySqlDataReader reader = sqlCom2.ExecuteReader();
+
 
             //check if the email already exists in the db
-            if (table.Rows.Count > 0)
+            if (reader.HasRows)
             {
+                MessageBox.Show("Така адреса електронної скриньки вже існує");
                 return true;
+
             }
             else
             {
                 return false;
             }
+
+            db1.closeConnection();
 
         }
 

@@ -36,7 +36,7 @@ namespace Library.Entrance
         {
             DBConnection db = new DBConnection();
 
-            // onnection is opened
+            // Сonnection is opened
             db.openConnection();
 
             String email = textBox1.Text;

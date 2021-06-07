@@ -139,3 +139,18 @@ namespace Library
         }
     }
 }
+
+
+//String secname = textBox1.Text;
+//String firname = textBox2.Text;
+//String thirname = textBox3.Text;
+
+//String city = textBox4.Text;
+//String street = textBox5.Text;
+//String house = textBox6.Text;
+//String flat = textBox7.Text;
+//String workplace = textBox8.Text;
+
+//String bdate = dateTimePicker1.Text;
+//String email = textBox9.Text;
+//String pass = textBox10.Text;
