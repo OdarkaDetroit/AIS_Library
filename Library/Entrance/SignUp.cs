@@ -22,6 +22,7 @@ namespace Library
         private void button1_Click(object sender, EventArgs e)
         {
             DBConnection db = new DBConnection();
+            db.openConnection();
 
             String secname = textBox1.Text;
             String firname = textBox2.Text;
@@ -53,7 +54,7 @@ namespace Library
             command.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
             command.Parameters.Add("@pssw", MySqlDbType.VarChar).Value = pass;
 
-            db.openConnection();
+
 
             if(CheckEmail())
             {

@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Library.Admin;
+using Library.Worker;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +13,13 @@ namespace Library.Entrance
 {
     public partial class SignIn : Form
     {
+
+
+        //public enum AccessBD { "User", "Librarian", "Administrator" }
+        ///public List<string> Roles { get; set; } = new List<string> { "User", "Librarian", "Administrator" };
+        
+        public static String emailParam;
+        private String accessParam;
 
         public SignIn()
         {
@@ -27,26 +36,69 @@ namespace Library.Entrance
         {
             DBConnection db = new DBConnection();
 
+            // onnection is opened
+            db.openConnection();
+
             String email = textBox1.Text;
             String password = textBox2.Text;
 
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand sqlCom1 = new MySqlCommand("SELECT * FROM 'reader' WHERE 'email' = @eml AND 'password' = @pass", db.getConnection());
+            //DataTable table = new DataTable();
 
-            sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
-            sqlCom1.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
+            MySqlCommand sqlCom1 = new MySqlCommand($"SELECT * FROM reader WHERE email = '{email}' AND password = '{password}'", db.getConnection());
 
-            adapter.Fill(table);
+            //sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
+            //sqlCom1.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
 
-            if (table.Rows.Count > 0)
+            MySqlDataReader reader = sqlCom1.ExecuteReader();
+
+            if (!reader.HasRows)
             {
-                MessageBox.Show("Успіх!");
+                MessageBox.Show("Не існує такого користувача!");
             }
             else
             {
-                MessageBox.Show("Такий користувач не існує");
-            }
+                MessageBox.Show("Успіх!");
+                while (reader.Read())
+                {
+                    emailParam = reader.GetString(10);
+                    accessParam = reader.GetString(12);
+                    if(accessParam == "User")
+                    {
+                        _ = new UserMain { Visible = true };
+                        Visible = false;
+                    }
+                    else if (accessParam == "Librarian")
+                    {
+                        _ = new WorkerMain { Visible = true };
+                        Visible = false;
+                    }
+                    else if (accessParam == "Administrator")
+                    {
+                        _ = new AdminMain { Visible = true };
+                        Visible = false;
+                    }
+                }
+            };
+
+            
+
+
+
+
+                //MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM 'reader' WHERE 'email' = @eml AND 'password' = @pass", db.getConnection());
+                //sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
+                //sqlCom1.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
+                //adapter.Fill(table);
+
+                //if (table.Rows.Count > 0)
+                //{
+                //    MessageBox.Show("Успіх!");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Такий користувач не існує");
+                //}
+                db.closeConnection();
         }
     }
 }
