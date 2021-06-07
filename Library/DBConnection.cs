@@ -13,21 +13,33 @@ namespace Library
         static String server = "localhost";
         static String username = "root";
         static String port = "3306";
+
+        //for DASHA
         static String password = "u8s8jDddds2_0";
         static String database = "lib";
 
-  //      string connectionString;
+        //for OLHA
+        static String password1 = "Oliakma2020";
+        static String database1 = "lib";
 
-  //      connectionString = "SERVER=" + server + ";" + "DATABASE=" + 
-		//database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
+        //      string connectionString;
 
-  //      connection = new MySqlConnection(connectionString);
+        //      connectionString = "SERVER=" + server + ";" + "DATABASE=" + 
+        //database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
+
+        //      connection = new MySqlConnection(connectionString);
 
         private MySqlConnection connection = new MySqlConnection("server=" + server 
                                + ";port=" + port
                                + ";user id=" + username + ";"
                                + "password=" + password + ";"
                                + "database=" + database);
+
+       //private MySqlConnection connection = new MySqlConnection("server=" + server
+       //               + ";port=" + port
+       //               + ";user id=" + username + ";"
+       //               + "password=" + password1 + ";"
+       //               + "database=" + database1);
 
         //private MySqlConnection connection = new MySqlConnection("server=localhost;username=root;password=u8s8jDddds2_0;database=lib");
 
