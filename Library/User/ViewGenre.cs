@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,21 @@ namespace Library
         {
             _ = new UserMain { Visible = true };
             Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
+                "SELECT catalogue_name FROM system_catalogue", db.getConnection()) ;
+           
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            db.closeConnection();
         }
     }
 }
