@@ -33,5 +33,38 @@ namespace Library.User
             _ = new UserMain { Visible = true };
             Visible = false;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String author = comboBox1.SelectedValue.ToString();
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
+                $"SELECT book_name FROM book WHERE id_book IN(SELECT ppk_book FROM author_book_connect WHERE ppk_author = '{author}')", db.getConnection());
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            db.closeConnection();
+
+        }
+
+        /*private void comboBox1_Click(object sender, EventArgs e)
+        {
+           
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
+                "SELECT catalogue_name FROM system_catalogue", db.getConnection());
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            db.closeConnection();
+        }*/
     }
 }

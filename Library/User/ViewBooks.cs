@@ -33,5 +33,21 @@ namespace Library
             _ = new UserMain { Visible = true };
             Visible = false;
         }
+
+      /*  private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String book = comboBox1.SelectedValue.ToString();
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
+                $" = '{book}'", db.getConnection());
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            db.closeConnection();
+        }*/
     }
 }

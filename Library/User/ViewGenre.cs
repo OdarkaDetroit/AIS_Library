@@ -52,8 +52,21 @@ namespace Library
             db.closeConnection();
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String genre = comboBox1.SelectedValue.ToString();
+            DBConnection db = new DBConnection();
+            db.openConnection();
 
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
+                $"SELECT book_name FROM(book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book) inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue WHERE catalogue_name = '{genre}'", db.getConnection());
 
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            db.closeConnection();
+        }
     }
 
 
