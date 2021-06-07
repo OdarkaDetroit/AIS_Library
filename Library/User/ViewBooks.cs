@@ -34,20 +34,21 @@ namespace Library
             Visible = false;
         }
 
-      /*  private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             String book = comboBox1.SelectedValue.ToString();
             DBConnection db = new DBConnection();
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
-                $" = '{book}'", db.getConnection());
+               $"SELECT id_exemplar FROM exemplar WHERE id_exemplar not in ( Select ppk_exemplar From borrowing Where real_return is null) and fk_book in (Select id_book FROM book WHERE book_name = '{book}')"
+               , db.getConnection());
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
             dataGridView1.DataSource = dataSet.Tables[0];
 
             db.closeConnection();
-        }*/
+        }
     }
 }

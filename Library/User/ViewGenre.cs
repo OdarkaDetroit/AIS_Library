@@ -59,7 +59,15 @@ namespace Library
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
-                $"SELECT book_name FROM(book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book) inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue WHERE catalogue_name = '{genre}'", db.getConnection());
+                " SELECT book_name "+
+"FROM(book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book) inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue "+
+$"WHERE catalogue_name = '{genre}' and "+
+"book.id_book in (Select fk_book "+
+            "From exemplar "+
+            "Where id_exemplar not in ( "+
+                    "Select ppk_exemplar "+
+                    "From borrowing "+
+                    "Where real_return is null))", db.getConnection());
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);

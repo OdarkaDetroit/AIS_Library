@@ -41,7 +41,7 @@ namespace Library.User
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
-                $"SELECT book_name FROM book WHERE id_book IN(SELECT ppk_book FROM author_book_connect WHERE ppk_author = '{author}')", db.getConnection());
+                $"SELECT book_name FROM book WHERE id_book IN (SELECT ppk_book FROM author_book_connect WHERE ppk_author = '{author}') and id_book in(Select fk_book From exemplar Where id_exemplar not in( Select ppk_exemplar From borrowing Where real_return is null))", db.getConnection());
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
