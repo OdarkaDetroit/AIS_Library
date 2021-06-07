@@ -35,11 +35,11 @@ namespace Library
                                + "password=" + password + ";"
                                + "database=" + database);
 
-      /*  private MySqlConnection connection = new MySqlConnection("server=" + server
-                       + ";port=" + port
-                       + ";user id=" + username + ";"
-                       + "password=" + password1 + ";"
-                       + "database=" + database1);*/
+        /* private MySqlConnection connection = new MySqlConnection("server=" + server
+                        + ";port=" + port
+                        + ";user id=" + username + ";"
+                        + "password=" + password1 + ";"
+                        + "database=" + database1);*/
 
         //private MySqlConnection connection = new MySqlConnection("server=localhost;username=root;password=u8s8jDddds2_0;database=lib");
 
