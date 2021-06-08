@@ -18,6 +18,30 @@ namespace Library
             InitializeComponent();
         }
 
+        // перевірка на вже існуючий email у БД
+        public Boolean CheckEmail()
+        {
+            DBConnection db1 = new DBConnection();
+
+            db1.openConnection();
+
+            String email = textBox9.Text;
+
+            MySqlCommand sqlCom2 = new MySqlCommand($"SELECT * FROM reader WHERE email = '{email}'", db1.getConnection());
+
+            MySqlDataReader reader = sqlCom2.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                MessageBox.Show("Така адреса електронної скриньки вже існує");
+                return true;
+            }
+            else { return false; }
+
+            db1.closeConnection();
+
+        }
+
         //registration (adding new user)
         private void button1_Click(object sender, EventArgs e)
         {
@@ -35,24 +59,17 @@ namespace Library
             string flat = textBox7.Text;
             string workplace = textBox8.Text;
 
-            string bdate = dateTimePicker1.Text;
+            DateTime bdate = dateTimePicker1.Value;
             string email = textBox9.Text;
             string pass = textBox10.Text;
 
             MySqlCommand command =
-                new MySqlCommand("INSERT INTO reader (sec_name, fir_name, third_name, " +
+                new MySqlCommand(
+                    "INSERT INTO reader (sec_name, fir_name, third_name, " +
                 "city, street, house, flat, workplace, birth_date, email, password, accessibility) VALUES " +
                 "(@sname, @fname, @tname, @cit, @str, @hos, @flt, @wrk, @brthd, @eml, @pssw, 'User')", db.getConnection());
 
-            //MySqlCommand command =
-            //    new MySqlCommand("INSERT INTO reader (sec_name, fir_name, third_name, " +
-            //    "city, street, house, flat, workplace, birth_date, email, password, accessibility) VALUES " +
-            //    "(@sec_name, @fir_name, @third_name, @city, @street, @house, @flat, @workplace, @birth_date, @email, @password, 'User')", db.getConnection());
-
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            command.Prepare();
+            //command.Prepare();
 
             command.Parameters.AddWithValue("@sname", secname);
             command.Parameters.AddWithValue("@fname", firname);
@@ -81,33 +98,7 @@ namespace Library
             command.Parameters.AddWithValue("@pssw", pass);
 
 
-
-            //command.Parameters.Add("@sname", MySqlDbType.VarChar).Value = secname;
-            //command.Parameters.Add("@fname", MySqlDbType.VarChar).Value = firname;
-
-            //if (thirname != "")
-            //    command.Parameters.Add("@tname", MySqlDbType.VarChar).Value = thirname;
-            //else
-            //    command.Parameters.AddWithValue("@tname", DBNull.Value);
-
-            //command.Parameters.Add("@cit", MySqlDbType.VarChar).Value = city;
-            //command.Parameters.Add("@str", MySqlDbType.VarChar).Value = street;
-            //command.Parameters.Add("@hos", MySqlDbType.VarChar).Value = house;
-
-            //if (flat != "")
-            //    command.Parameters.Add("@flt", MySqlDbType.Int32).Value = flat;
-            //else
-            //    command.Parameters.AddWithValue("@flt", DBNull.Value);
-
-            //if (workplace != "")
-            //    command.Parameters.Add("@wrk", MySqlDbType.VarChar).Value = workplace;
-            //else
-            //    command.Parameters.AddWithValue("@wrk", DBNull.Value);
-
-            //command.Parameters.Add("@brthd", MySqlDbType.Date).Value = bdate;
-            //command.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
-            //command.Parameters.Add("@pssw", MySqlDbType.VarChar).Value = pass;
-
+            MySqlDataReader reader = command.ExecuteReader();
 
 
             if (CheckEmail())
@@ -133,10 +124,6 @@ namespace Library
                     }
 
                 }
-                //else
-                //{
-                //    MessageBox.Show("Акаунт не створено");
-                //}
             }
 
             db.closeConnection();
@@ -162,40 +149,7 @@ namespace Library
         //    }
         //}
 
-        public Boolean CheckEmail()
-        {
-            DBConnection db1 = new DBConnection();
 
-            db1.openConnection();
-
-            String email = textBox9.Text;
-
-            //DataTable table = new DataTable();
-            //MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand sqlCom2 = new MySqlCommand($"SELECT * FROM reader WHERE email = '{email}'", db1.getConnection());
-
-            //sqlCom2.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
-
-            //adapter.Fill(table);
-            MySqlDataReader reader = sqlCom2.ExecuteReader();
-
-
-            //check if the email already exists in the db
-            if (reader.HasRows)
-            {
-                MessageBox.Show("Така адреса електронної скриньки вже існує");
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
-
-            db1.closeConnection();
-
-        }
 
     }
 }

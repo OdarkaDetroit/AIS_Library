@@ -17,14 +17,19 @@ namespace Library.User
             DBConnection d = new DBConnection();
 
             string query = "SELECT * FROM authors;";
+
             MySqlCommand sqlCommand = new MySqlCommand(query, d.getConnection());
+
             d.openConnection();
+
             MySqlDataAdapter sdr = new MySqlDataAdapter(sqlCommand);
             DataTable dt = new DataTable();
             sdr.Fill(dt);
+
             comboBox1.DataSource = dt;
             //comboBox1.DisplayMember = "catalogue_name";
             comboBox1.ValueMember = "second_name";
+
             d.closeConnection();
         }
 
@@ -38,10 +43,26 @@ namespace Library.User
         {
             String author = comboBox1.SelectedValue.ToString();
             DBConnection db = new DBConnection();
+
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
-                $"SELECT book_name FROM book WHERE id_book IN (SELECT ppk_book FROM author_book_connect WHERE ppk_author = '{author}') and id_book in(Select fk_book From exemplar Where id_exemplar not in( Select ppk_exemplar From borrowing Where real_return is null))", db.getConnection());
+                $"SELECT book_name " +
+                $"FROM book " +
+                $"WHERE id_book IN " +
+
+                $"(SELECT ppk_book " +
+                $"FROM author_book_connect " +
+                $"WHERE ppk_author = '{author}') " +
+                $"and id_book in" +
+
+                $"(Select fk_book " +
+                $"From exemplar " +
+                $"Where id_exemplar not in" +
+
+                $"( Select ppk_exemplar " +
+                $"From borrowing " +
+                $"Where real_return is null))", db.getConnection());
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
@@ -53,7 +74,7 @@ namespace Library.User
 
         /*private void comboBox1_Click(object sender, EventArgs e)
         {
-           
+
             DBConnection db = new DBConnection();
             db.openConnection();
 

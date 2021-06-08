@@ -19,14 +19,19 @@ namespace Library
             DBConnection d = new DBConnection();
 
             string query = "SELECT * FROM system_catalogue";
+
             MySqlCommand sqlCommand = new MySqlCommand(query, d.getConnection());
+
             d.openConnection();
+
             MySqlDataAdapter sdr = new MySqlDataAdapter(sqlCommand);
             DataTable dt = new DataTable();
             sdr.Fill(dt);
+
             comboBox1.DataSource = dt;
             //comboBox1.DisplayMember = "catalogue_name";
             comboBox1.ValueMember = "catalogue_name";
+
             d.closeConnection();
 
         }
@@ -42,8 +47,8 @@ namespace Library
             DBConnection db = new DBConnection();
             db.openConnection();
 
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
-                "SELECT catalogue_name FROM system_catalogue", db.getConnection());
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter
+                ("SELECT catalogue_name FROM system_catalogue", db.getConnection());
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
@@ -58,16 +63,22 @@ namespace Library
             DBConnection db = new DBConnection();
             db.openConnection();
 
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter
+                (
                 " SELECT book_name "+
-"FROM(book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book) inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue "+
-$"WHERE catalogue_name = '{genre}' and "+
-"book.id_book in (Select fk_book "+
-            "From exemplar "+
-            "Where id_exemplar not in ( "+
-                    "Select ppk_exemplar "+
-                    "From borrowing "+
-                    "Where real_return is null))", db.getConnection());
+                "FROM(book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book) " +
+                "inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue "+
+
+                $"WHERE catalogue_name = '{genre}' and book.id_book in " +
+
+                "(Select fk_book "+
+                "From exemplar "+
+                "Where id_exemplar not in " +
+
+                "(Select ppk_exemplar "+
+                "From borrowing "+
+                "Where real_return is null))", db.getConnection()
+                );
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);

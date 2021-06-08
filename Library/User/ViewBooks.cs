@@ -40,9 +40,21 @@ namespace Library
             DBConnection db = new DBConnection();
             db.openConnection();
 
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
-               $"SELECT id_exemplar FROM exemplar WHERE id_exemplar not in ( Select ppk_exemplar From borrowing Where real_return is null) and fk_book in (Select id_book FROM book WHERE book_name = '{book}')"
-               , db.getConnection());
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter
+                (
+               $"SELECT id_exemplar " +
+               $"FROM exemplar " +
+               $"WHERE id_exemplar not in " +
+
+               $"(Select ppk_exemplar " +
+               $"From borrowing " +
+               $"Where real_return is null) and fk_book in " +
+
+               $"(Select id_book " +
+               $"FROM book " +
+               $"WHERE book_name = '{book}')"
+               , db.getConnection()
+               );
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
