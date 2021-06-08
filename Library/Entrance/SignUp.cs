@@ -33,7 +33,7 @@ namespace Library
 
             if (reader.HasRows)
             {
-                MessageBox.Show("Така адреса електронної скриньки вже існує");
+                //MessageBox.Show("Така адреса електронної скриньки вже існує");
                 return true;
             }
             else { return false; }
@@ -54,8 +54,8 @@ namespace Library
             string thirname = textBox3.Text;
 
             string city = textBox4.Text;
-            string street = textBox5.Text;
-            string house = textBox6.Text;
+            string street = textBox6.Text;
+            string house = textBox5.Text;
             string flat = textBox7.Text;
             string workplace = textBox8.Text;
 

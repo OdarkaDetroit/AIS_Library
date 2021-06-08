@@ -39,7 +39,7 @@ namespace Library.Worker
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 64);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Зареєструвати книгу";
+            this.button1.Text = "Додати примірник";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2

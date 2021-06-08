@@ -16,6 +16,12 @@
     <Compile Update="Entrance\SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="User\MyBookHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="User\MyBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="User\UserMain.cs">
       <SubType>Form</SubType>
     </Compile>
