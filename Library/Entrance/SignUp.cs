@@ -63,44 +63,6 @@ namespace Library
             string email = textBox9.Text;
             string pass = textBox10.Text;
 
-            MySqlCommand command =
-                new MySqlCommand(
-                    "INSERT INTO reader (sec_name, fir_name, third_name, " +
-                "city, street, house, flat, workplace, birth_date, email, password, accessibility) VALUES " +
-                "(@sname, @fname, @tname, @cit, @str, @hos, @flt, @wrk, @brthd, @eml, @pssw, 'User')", db.getConnection());
-
-            //command.Prepare();
-
-            command.Parameters.AddWithValue("@sname", secname);
-            command.Parameters.AddWithValue("@fname", firname);
-
-            if (thirname != "")
-                command.Parameters.AddWithValue("@tname", thirname);
-            else
-                command.Parameters.AddWithValue("@tname", DBNull.Value);
-
-            command.Parameters.AddWithValue("@cit", city);
-            command.Parameters.AddWithValue("@str", street);
-            command.Parameters.AddWithValue("@hos", house);
-
-            if (flat != "")
-                command.Parameters.AddWithValue("@flt", flat);
-            else
-                command.Parameters.AddWithValue("@flt", DBNull.Value);
-
-            if (workplace != "")
-                command.Parameters.AddWithValue("@wrk", workplace);
-            else
-                command.Parameters.AddWithValue("@wrk", DBNull.Value);
-
-            command.Parameters.AddWithValue("@brthd", bdate);
-            command.Parameters.AddWithValue("@eml", email);
-            command.Parameters.AddWithValue("@pssw", pass);
-
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-
             if (CheckEmail())
             {
                 MessageBox.Show("Ця електронна скринька вже використовується");
@@ -114,42 +76,77 @@ namespace Library
                 {
                     MessageBox.Show("Акаунт не створено - не всі необхідні дані надані");
                 }
-                else if (command.ExecuteNonQuery() == 1)
+                else
                 {
-                    MessageBox.Show("Створено акаунт!");
-                    while(reader.Read())
-                    {
-                        _ = new UserMain { Visible = true };
-                        Visible = false;
-                    }
+                    MySqlCommand command =
+                new MySqlCommand(
+                    "INSERT INTO reader (sec_name, fir_name, third_name, " +
+                "city, street, house, flat, workplace, birth_date, email, password, accessibility) VALUES " +
+                "(@sname, @fname, @tname, @cit, @str, @hos, @flt, @wrk, @brthd, @eml, @pssw, 'User')", db.getConnection());
+
+                    //command.Prepare();
+
+                    command.Parameters.AddWithValue("@sname", secname);
+                    command.Parameters.AddWithValue("@fname", firname);
+
+                    if (thirname != "")
+                        command.Parameters.AddWithValue("@tname", thirname);
+                    else
+                        command.Parameters.AddWithValue("@tname", DBNull.Value);
+
+                    command.Parameters.AddWithValue("@cit", city);
+                    command.Parameters.AddWithValue("@str", street);
+                    command.Parameters.AddWithValue("@hos", house);
+
+                    if (flat != "")
+                        command.Parameters.AddWithValue("@flt", flat);
+                    else
+                        command.Parameters.AddWithValue("@flt", DBNull.Value);
+
+                    if (workplace != "")
+                        command.Parameters.AddWithValue("@wrk", workplace);
+                    else
+                        command.Parameters.AddWithValue("@wrk", DBNull.Value);
+
+                    command.Parameters.AddWithValue("@brthd", bdate);
+                    command.Parameters.AddWithValue("@eml", email);
+                    command.Parameters.AddWithValue("@pssw", pass);
+
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                        MessageBox.Show("Створено акаунт!");
+
+                            _ = new UserMain { Visible = true };
+                            Visible = false;
 
                 }
+
+                db.closeConnection();
             }
 
-            db.closeConnection();
+            //some visual changes, no value
+
+            //private void textBox1_TextChanged(object sender, EventArgs e)
+            //{
+            //    String secName = textBox1.Text;
+            //    if(secName.Equals("second name"))
+            //    {
+            //        textBox1.Text = "";
+            //    }
+            //}
+
+            //private void textBox2_TextChanged(object sender, EventArgs e)
+            //{
+            //    String firName = textBox2.Text;
+            //    if (firName.Equals("first name"))
+            //    {
+            //        textBox2.Text = "";
+            //    }
+            //}
+
+
+
         }
-
-        //some visual changes, no value
-
-        //private void textBox1_TextChanged(object sender, EventArgs e)
-        //{
-        //    String secName = textBox1.Text;
-        //    if(secName.Equals("second name"))
-        //    {
-        //        textBox1.Text = "";
-        //    }
-        //}
-
-        //private void textBox2_TextChanged(object sender, EventArgs e)
-        //{
-        //    String firName = textBox2.Text;
-        //    if (firName.Equals("first name"))
-        //    {
-        //        textBox2.Text = "";
-        //    }
-        //}
-
-
-
     }
 }

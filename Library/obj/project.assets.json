@@ -885,11 +885,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\Library.csproj",
+      "projectUniqueName": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\Library.csproj",
       "projectName": "Library",
-      "projectPath": "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\Library.csproj",
+      "projectPath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\Library.csproj",
       "packagesPath": "C:\\Users\\dasha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dasha\\source\\repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\obj\\",
+      "outputPath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dasha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -945,7 +945,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }
