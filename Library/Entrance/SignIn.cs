@@ -19,7 +19,7 @@ namespace Library.Entrance
         ///public List<string> Roles { get; set; } = new List<string> { "User", "Librarian", "Administrator" };
         
         public static string emailParam;
-        private string accessParam;
+        
         public static int userId;
         public static string userSecN;
 
@@ -74,22 +74,22 @@ namespace Library.Entrance
                 while (reader.Read())
                 {
                     emailParam = reader.GetString(10);
-                    accessParam = reader.GetString(12);
-                    if(accessParam == "User")
-                    {
+                    ///accessParam = reader.GetString(12);
+                    //if(accessParam == "User")
+                    //{
                         _ = new UserMain { Visible = true };
                         Visible = false;
-                    }
-                    else if (accessParam == "Librarian")
-                    {
-                        _ = new WorkerMain { Visible = true };
-                        Visible = false;
-                    }
-                    else if (accessParam == "Administrator")
-                    {
-                        _ = new AdminMain { Visible = true };
-                        Visible = false;
-                    }
+                    //}
+                    //else if (accessParam == "Librarian")
+                    //{
+                    //    _ = new WorkerMain { Visible = true };
+                    //    Visible = false;
+                    //}
+                    //else if (accessParam == "Administrator")
+                    //{
+                    //    _ = new AdminMain { Visible = true };
+                    //    Visible = false;
+                    //}
                 }
             };
 
@@ -109,7 +109,12 @@ namespace Library.Entrance
                 //}
                 db.closeConnection();
         }
-      
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _ = new WorkSignIn { Visible = true };
+            Visible = false;
+        }
     }
    
 }

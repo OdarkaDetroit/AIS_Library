@@ -1,3 +1,4 @@
+using Library.Admin;
 using Library.Entrance;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Library
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SignIn());
+            Application.Run(new AdminMain());
         }
     }
 }
