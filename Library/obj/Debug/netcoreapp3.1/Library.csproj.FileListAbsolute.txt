@@ -136,3 +136,5 @@ C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\
 C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.genruntimeconfig.cache
 C:\Users\dasha\Source\Repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBookHistory.resources
 C:\Users\dasha\Source\Repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBooks.resources
+C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBookHistory.resources
+C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBooks.resources

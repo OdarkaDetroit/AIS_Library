@@ -20,6 +20,8 @@ namespace Library.Entrance
         
         public static string emailParam;
         private string accessParam;
+        public static int userId;
+        public static string userSecN;
 
         public SignIn()
         {
@@ -39,12 +41,14 @@ namespace Library.Entrance
             // Сonnection is opened
             db.openConnection();
 
-            string email = textBox1.Text;
+            emailParam = textBox1.Text;
+           
+
             string password = textBox2.Text;
 
             //DataTable table = new DataTable();
 
-            MySqlCommand sqlCom1 = new MySqlCommand($"SELECT * FROM reader WHERE email = '{email}' AND password = '{password}'", db.getConnection());
+            MySqlCommand sqlCom1 = new MySqlCommand($"SELECT * FROM reader WHERE email = '{emailParam}' AND password = '{password}'", db.getConnection());
 
             //sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
             //sqlCom1.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
@@ -57,6 +61,15 @@ namespace Library.Entrance
             }
             else
             {
+                DBConnection ndb = new DBConnection();
+                ndb.openConnection();
+                MySqlCommand userCom = new MySqlCommand($"Select id_reader From reader Where email = '{emailParam}'", ndb.getConnection());
+                userId = (int)userCom.ExecuteScalar();
+
+                MySqlCommand userC = new MySqlCommand($"Select sec_name From reader Where email = '{emailParam}'", ndb.getConnection());
+                userSecN = (string)userC.ExecuteScalar();
+                ndb.closeConnection();
+
                 MessageBox.Show("Успіх!");
                 while (reader.Read())
                 {
@@ -80,11 +93,7 @@ namespace Library.Entrance
                 }
             };
 
-            
-
-
-
-
+        
                 //MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM 'reader' WHERE 'email' = @eml AND 'password' = @pass", db.getConnection());
                 //sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
                 //sqlCom1.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
@@ -100,5 +109,7 @@ namespace Library.Entrance
                 //}
                 db.closeConnection();
         }
+      
     }
+   
 }
