@@ -48,7 +48,17 @@ namespace Library
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
-                ("SELECT catalogue_name FROM system_catalogue", db.getConnection());
+                (" SELECT catalogue_name " +
+                " FROM system_catalogue" +
+                " where id_catalogue IN(" +
+                "     select id_catalogue" +
+                "         from book_catalogue_connet " +
+                "         where id_book in(" +
+                "         select fk_book " +
+                "                 from exemplar " +
+                "                 where id_exemplar not in" +
+                "             (select old_exemp" +
+                "                         from changes)))", db.getConnection());
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);

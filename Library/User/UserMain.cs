@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.Crmf;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -18,12 +19,96 @@ namespace Library
         public UserMain()
         {
             InitializeComponent();
+    
+            DBConnection d = new DBConnection();
+
+            string query = " SELECT catalogue_name " +
+                " FROM system_catalogue" +
+                " where id_catalogue IN(" +
+                "     select id_catalogue" +
+                "         from book_catalogue_connet " +
+                "         where id_book in(" +
+                "         select fk_book " +
+                "                 from exemplar " +
+                "                 where id_exemplar not in" +
+                "             (select old_exemp" +
+                "                         from changes)))";
+
+            MySqlCommand sqlCommand = new MySqlCommand(query, d.getConnection());
+
+            string qAuthor = " SELECT* FROM authors" +
+                            " where second_name in(" +
+                            " 		select ppk_author" +
+                            "         from author_book_connect" +
+                            "         where ppk_book in(" +
+                            " 				select fk_book " +
+                            "                 from exemplar " +
+                            "                 where id_exemplar not in" +
+                            " 						(select old_exemp" +
+                            "                         from changes)));";
+            MySqlCommand sqlAuthor = new MySqlCommand(qAuthor, d.getConnection());
+
+            d.openConnection();
+
+            MySqlDataAdapter sdr = new MySqlDataAdapter(sqlCommand);
+            DataTable dt = new DataTable();
+            sdr.Fill(dt);
+
+            comboBox1.DataSource = dt;
+            //comboBox1.DisplayMember = "catalogue_name";
+            comboBox1.ValueMember = "catalogue_name";
+
+            //////////////////////////////////////////////////
+
+            string queryAuthor = " SELECT* FROM authors" +
+                            " where second_name in(" +
+                            " 		select ppk_author" +
+                            "         from author_book_connect" +
+                            "         where ppk_book in(" +
+                            " 				select fk_book " +
+                            "                 from exemplar " +
+                            "                 where id_exemplar not in" +
+                            " 						(select old_exemp" +
+                            "                         from changes)));";
+
+            MySqlCommand sqlCommandAuthor = new MySqlCommand(queryAuthor, d.getConnection());
+
+            //d.openConnection();
+
+            MySqlDataAdapter sdrAuthor = new MySqlDataAdapter(sqlCommandAuthor);
+            DataTable dtAuthor = new DataTable();
+            sdrAuthor.Fill(dtAuthor);
+
+            comboBox2.DataSource = dtAuthor;
+            //comboBox1.DisplayMember = "catalogue_name";
+            comboBox2.ValueMember = "second_name";
+
+            d.closeConnection();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _ = new ViewGenre { Visible = true };
-            Visible = false;
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter
+                (" SELECT catalogue_name as назва_жанру" +
+                " FROM system_catalogue" +
+                " where id_catalogue IN(" +
+                "     select id_catalogue" +
+                "         from book_catalogue_connet " +
+                "         where id_book in(" +
+                "         select fk_book " +
+                "                 from exemplar " +
+                "                 where id_exemplar not in" +
+                "             (select old_exemp" +
+                "                         from changes)))", db.getConnection());
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            db.closeConnection();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -91,6 +176,114 @@ namespace Library
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
             dataGridView1.DataSource = dataSet.Tables[0];
+
+            db.closeConnection();
+        }
+        public int count1 = 0;
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String genre = comboBox1.SelectedValue.ToString();
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter
+                (
+                " SELECT book_name as назва_книги " +
+                "  FROM(book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book)" +
+                "  inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue " +
+                $"  WHERE catalogue_name = '{genre}' and book.id_book in " +
+                "  (Select fk_book " +
+                "  From exemplar " +
+                "  Where id_exemplar not in " +
+                "  (Select ppk_exemplar " +
+                "  From borrowing " +
+                "  Where real_return is null)" +
+                "  and id_exemplar not in (" +
+                "  select old_exemp" +
+                "  from changes))" , db.getConnection()
+                );
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            MySqlCommand authorCom = new MySqlCommand(" SELECT book_name as назва_книги " +
+                "  FROM(book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book)" +
+                "  inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue " +
+                $"  WHERE catalogue_name = '{genre}' and book.id_book in " +
+                "  (Select fk_book " +
+                "  From exemplar " +
+                "  Where id_exemplar not in " +
+                "  (Select ppk_exemplar " +
+                "  From borrowing " +
+                "  Where real_return is null)" +
+                "  and id_exemplar not in (" +
+                "  select old_exemp" +
+                "  from changes))", db.getConnection());
+            string authorcheck = (string)authorCom.ExecuteScalar();
+
+            if (authorcheck == null && count1 > 0)
+            {
+
+               MessageBox.Show("Зараз немає вільних книг цього жанру!");
+            }
+            if (authorcheck == null) { count1++; }
+
+            db.closeConnection();
+        }
+        public int count = 0;
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String author = comboBox2.SelectedValue.ToString();
+            DBConnection db = new DBConnection();
+
+            db.openConnection();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(
+       " SELECT book_name " +
+        "                 FROM book" +
+        "                 WHERE id_book IN " +
+        "                 (SELECT ppk_book " +
+        "                 FROM author_book_connect " +
+        $"                 WHERE ppk_author = '{author}') " +
+        "                 and id_book in" +
+        "                 (Select fk_book " +
+        "                 From exemplar " +
+        "                 Where id_exemplar not in" +
+        "                 ( Select ppk_exemplar " +
+        "                 From borrowing " +
+        "                 Where real_return is null)" +
+        "                 and id_exemplar not in (" +
+        " 							select old_exemp" +
+        "                             from changes))", db.getConnection());
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            MySqlCommand authorCom = new MySqlCommand(" SELECT book_name " +
+        "                 FROM book" +
+        "                 WHERE id_book IN " +
+        "                 (SELECT ppk_book " +
+        "                 FROM author_book_connect " +
+        $"                 WHERE ppk_author = '{author}') " +
+        "                 and id_book in" +
+        "                 (Select fk_book " +
+        "                 From exemplar " +
+        "                 Where id_exemplar not in" +
+        "                 ( Select ppk_exemplar " +
+        "                 From borrowing " +
+        "                 Where real_return is null)" +
+        "                 and id_exemplar not in (" +
+        " 							select old_exemp" +
+        "                             from changes))", db.getConnection());
+            string authorcheck = (string)authorCom.ExecuteScalar();
+         
+                if (authorcheck == null && count >0) {
+              
+                    MessageBox.Show("Зараз у цього автора немає вільних книг!");
+            }
+            if (authorcheck == null) { count++; }
 
             db.closeConnection();
         }

@@ -139,3 +139,4 @@ C:\Users\dasha\Source\Repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBookHistory.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBooks.resources
 C:\Users\dasha\Source\Repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.WorkSignIn.resources
+C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.WorkSignIn.resources
