@@ -45,26 +45,29 @@ namespace Library.Entrance
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(86, 62);
+            this.label1.Location = new System.Drawing.Point(108, 78);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(375, 41);
+            this.label1.Size = new System.Drawing.Size(452, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Вхід до облікового запису";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(138, 177);
+            this.textBox1.Location = new System.Drawing.Point(172, 221);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(285, 27);
+            this.textBox1.Size = new System.Drawing.Size(355, 31);
             this.textBox1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(138, 154);
+            this.label2.Location = new System.Drawing.Point(172, 192);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 20);
+            this.label2.Size = new System.Drawing.Size(163, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Введіть Ваш e-mail";
             // 
@@ -72,25 +75,28 @@ namespace Library.Entrance
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(138, 231);
+            this.label3.Location = new System.Drawing.Point(172, 289);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 20);
+            this.label3.Size = new System.Drawing.Size(173, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Введіть Ваш пароль";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(138, 254);
+            this.textBox2.Location = new System.Drawing.Point(172, 318);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(285, 27);
+            this.textBox2.Size = new System.Drawing.Size(355, 31);
             this.textBox2.TabIndex = 3;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Beige;
-            this.button1.Location = new System.Drawing.Point(200, 351);
+            this.button1.Location = new System.Drawing.Point(250, 439);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 55);
+            this.button1.Size = new System.Drawing.Size(185, 69);
             this.button1.TabIndex = 5;
             this.button1.Text = "Увійти";
             this.button1.UseVisualStyleBackColor = false;
@@ -99,9 +105,10 @@ namespace Library.Entrance
             // registrateButton
             // 
             this.registrateButton.BackColor = System.Drawing.Color.PowderBlue;
-            this.registrateButton.Location = new System.Drawing.Point(200, 428);
+            this.registrateButton.Location = new System.Drawing.Point(250, 535);
+            this.registrateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.registrateButton.Name = "registrateButton";
-            this.registrateButton.Size = new System.Drawing.Size(148, 55);
+            this.registrateButton.Size = new System.Drawing.Size(185, 69);
             this.registrateButton.TabIndex = 6;
             this.registrateButton.Text = "Зареєструватися";
             this.registrateButton.UseVisualStyleBackColor = false;
@@ -112,17 +119,19 @@ namespace Library.Entrance
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(15, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(555, 536);
+            this.panel1.Size = new System.Drawing.Size(694, 670);
             this.panel1.TabIndex = 7;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Beige;
-            this.button2.Location = new System.Drawing.Point(188, 291);
+            this.button2.Location = new System.Drawing.Point(235, 364);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 33);
+            this.button2.Size = new System.Drawing.Size(185, 41);
             this.button2.TabIndex = 8;
             this.button2.Text = "Я працівник";
             this.button2.UseVisualStyleBackColor = false;
@@ -130,9 +139,9 @@ namespace Library.Entrance
             // 
             // SignIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 560);
+            this.ClientSize = new System.Drawing.Size(724, 700);
             this.Controls.Add(this.registrateButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -140,6 +149,7 @@ namespace Library.Entrance
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SignIn";
             this.Text = "SignIn";
             this.panel1.ResumeLayout(false);

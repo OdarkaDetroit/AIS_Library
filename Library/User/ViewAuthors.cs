@@ -16,7 +16,16 @@ namespace Library.User
             InitializeComponent();
             DBConnection d = new DBConnection();
 
-            string query = "SELECT * FROM authors;";
+            string query = " SELECT* FROM authors" +
+                            " where second_name in(" +
+                            " 		select ppk_author" +
+                            "         from author_book_connect" +
+                            "         where ppk_book in(" +
+                            " 				select fk_book " +
+                            "                 from exemplar " +
+                            "                 where id_exemplar not in" +
+                            " 						(select old_exemp" +
+                            "                         from changes)));";
 
             MySqlCommand sqlCommand = new MySqlCommand(query, d.getConnection());
 

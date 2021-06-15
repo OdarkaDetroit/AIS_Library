@@ -35,8 +35,11 @@ namespace Library
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -46,15 +49,15 @@ namespace Library
             this.button1.Location = new System.Drawing.Point(17, 13);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 61);
+            this.button1.Size = new System.Drawing.Size(234, 61);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Перегляд жанрів";
+            this.button1.Text = "Перегляд усіх жанрів";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(17, 106);
+            this.button2.Location = new System.Drawing.Point(481, 420);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(175, 61);
@@ -65,7 +68,7 @@ namespace Library
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(17, 204);
+            this.button3.Location = new System.Drawing.Point(756, 465);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(175, 61);
@@ -76,7 +79,7 @@ namespace Library
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(17, 302);
+            this.button4.Location = new System.Drawing.Point(858, 252);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(175, 61);
@@ -87,7 +90,7 @@ namespace Library
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(17, 401);
+            this.button5.Location = new System.Drawing.Point(858, 134);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(175, 61);
@@ -99,6 +102,9 @@ namespace Library
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button5);
@@ -112,11 +118,30 @@ namespace Library
             this.panel1.Size = new System.Drawing.Size(1106, 599);
             this.panel1.TabIndex = 9;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(42, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 50);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Перегляд книг за \r\nконкретним жанром\r\n";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(17, 149);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(234, 33);
+            this.comboBox1.TabIndex = 10;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(806, 13);
+            this.button6.Location = new System.Drawing.Point(833, 13);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(266, 67);
+            this.button6.Size = new System.Drawing.Size(239, 67);
             this.button6.TabIndex = 9;
             this.button6.Text = "вільні книги того жанру що зараз у мене";
             this.button6.UseVisualStyleBackColor = true;
@@ -124,13 +149,24 @@ namespace Library
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(224, 13);
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.Location = new System.Drawing.Point(269, 13);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(542, 283);
+            this.dataGridView1.Size = new System.Drawing.Size(548, 283);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(17, 252);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(234, 33);
+            this.comboBox2.TabIndex = 12;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // UserMain
             // 
@@ -142,6 +178,7 @@ namespace Library
             this.Name = "UserMain";
             this.Text = "UserMain";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -157,5 +194,8 @@ namespace Library
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
