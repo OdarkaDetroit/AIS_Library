@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Library.Entrance;
 
+using static Library.PasswordManipulations;
+
 namespace Library
 {
     public partial class SignUp : Form
@@ -41,6 +43,7 @@ namespace Library
             db1.closeConnection();
 
         }
+
 
         //registration (adding new user)
         private void button1_Click(object sender, EventArgs e)
@@ -80,9 +83,9 @@ namespace Library
                 {
                     MySqlCommand command =
                 new MySqlCommand(
-                    "INSERT INTO reader (sec_name, fir_name, third_name, " +
-                "city, street, house, flat, workplace, birth_date, email, password, accessibility) VALUES " +
-                "(@sname, @fname, @tname, @cit, @str, @hos, @flt, @wrk, @brthd, @eml, @pssw, 'User')", db.getConnection());
+                    "INSERT INTO reader (sec_name, first_name, third_name, " +
+                "city, street, house, flat, workplace, birth_date, email, password) VALUES " +
+                "(@sname, @fname, @tname, @cit, @str, @hos, @flt, @wrk, @brthd, @eml, @pssw)", db.getConnection());
 
                     //command.Prepare();
 
@@ -110,7 +113,10 @@ namespace Library
 
                     command.Parameters.AddWithValue("@brthd", bdate);
                     command.Parameters.AddWithValue("@eml", email);
-                    command.Parameters.AddWithValue("@pssw", pass);
+
+                    // encoding gotten from the current user password
+                    string encodePass = EncodePasswordToBase64(pass);
+                    command.Parameters.AddWithValue("@pssw", encodePass);
 
 
                     MySqlDataReader reader = command.ExecuteReader();

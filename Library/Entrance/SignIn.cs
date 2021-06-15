@@ -9,6 +9,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+using static Library.PasswordManipulations;
+
 namespace Library.Entrance
 {
     public partial class SignIn : Form
@@ -17,9 +19,9 @@ namespace Library.Entrance
 
         //public enum AccessBD { "User", "Librarian", "Administrator" }
         ///public List<string> Roles { get; set; } = new List<string> { "User", "Librarian", "Administrator" };
-        
+
         public static string emailParam;
-        
+
         public static int userId;
         public static string userSecN;
 
@@ -41,17 +43,13 @@ namespace Library.Entrance
             // Сonnection is opened
             db.openConnection();
 
+            // getting encoded to Base64 password from user
             emailParam = textBox1.Text;
-           
+            string password = EncodePasswordToBase64(textBox2.Text);
 
-            string password = textBox2.Text;
-
-            //DataTable table = new DataTable();
 
             MySqlCommand sqlCom1 = new MySqlCommand($"SELECT * FROM reader WHERE email = '{emailParam}' AND password = '{password}'", db.getConnection());
 
-            //sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
-            //sqlCom1.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
 
             MySqlDataReader reader = sqlCom1.ExecuteReader();
 
@@ -63,10 +61,10 @@ namespace Library.Entrance
             {
                 DBConnection ndb = new DBConnection();
                 ndb.openConnection();
-                MySqlCommand userCom = new MySqlCommand($"Select id_reader From reader Where email = '{emailParam}'", ndb.getConnection());
+                MySqlCommand userCom = new MySqlCommand($"SELECT id_reader FROM reader WHERE email = '{emailParam}'", ndb.getConnection());
                 userId = (int)userCom.ExecuteScalar();
 
-                MySqlCommand userC = new MySqlCommand($"Select sec_name From reader Where email = '{emailParam}'", ndb.getConnection());
+                MySqlCommand userC = new MySqlCommand($"SELECT sec_name FROM reader WHERE email = '{emailParam}'", ndb.getConnection());
                 userSecN = (string)userC.ExecuteScalar();
                 ndb.closeConnection();
 
@@ -74,39 +72,12 @@ namespace Library.Entrance
                 while (reader.Read())
                 {
                     emailParam = reader.GetString(10);
-                    ///accessParam = reader.GetString(12);
-                    //if(accessParam == "User")
-                    //{
-                        _ = new UserMain { Visible = true };
-                        Visible = false;
-                    //}
-                    //else if (accessParam == "Librarian")
-                    //{
-                    //    _ = new WorkerMain { Visible = true };
-                    //    Visible = false;
-                    //}
-                    //else if (accessParam == "Administrator")
-                    //{
-                    //    _ = new AdminMain { Visible = true };
-                    //    Visible = false;
-                    //}
+
+                    _ = new UserMain { Visible = true };
+                    Visible = false;
+
                 }
             };
-
-        
-                //MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM 'reader' WHERE 'email' = @eml AND 'password' = @pass", db.getConnection());
-                //sqlCom1.Parameters.Add("@eml", MySqlDbType.VarChar).Value = email;
-                //sqlCom1.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
-                //adapter.Fill(table);
-
-                //if (table.Rows.Count > 0)
-                //{
-                //    MessageBox.Show("Успіх!");
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Такий користувач не існує");
-                //}
                 db.closeConnection();
         }
 
@@ -116,5 +87,5 @@ namespace Library.Entrance
             Visible = false;
         }
     }
-   
+
 }
