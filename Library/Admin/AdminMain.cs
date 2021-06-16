@@ -11,30 +11,35 @@ namespace Library.Admin
 {
     public partial class AdminMain : Form
     {
-        //string @format = "yyyy-MM-dd";  //date format
-        string @dateNow = DateTime.Now.ToString("yyyy-MM-dd");
-        string @dateTwoYearsAgo = DateTime.Now.AddYears(-2).ToString("yyyy-MM-dd");
-
         public AdminMain()
         {
             InitializeComponent();
 
-            DBConnection d = new DBConnection();
+            DBConnection db = new DBConnection();
+
             // отримання значень з таблиці "system_catalogue"
             string query = "SELECT * FROM system_catalogue";
+            string queryBook = "SELECT * FROM book";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query, d.getConnection());
+            MySqlCommand sqlCommand = new MySqlCommand(query, db.getConnection());
+            MySqlCommand sqlCommandBook = new MySqlCommand(queryBook, db.getConnection());
 
-            d.openConnection();
+            db.openConnection();
 
             MySqlDataAdapter sdr = new MySqlDataAdapter(sqlCommand);
+            MySqlDataAdapter sdrBook = new MySqlDataAdapter(sqlCommandBook);
             DataTable dt = new DataTable();
+            DataTable dtBook = new DataTable();
             sdr.Fill(dt);
+            sdrBook.Fill(dtBook);
+
             // обираємо колонку з необхідними даними
             comboBox1.DataSource = dt;
             comboBox1.ValueMember = "catalogue_name";
+            bookNameBox.DataSource = dtBook;
+            bookNameBox.ValueMember = "book_name";
 
-            d.closeConnection();
+            db.closeConnection();
         }
 
         // біла панель з випадаючим списком тих значень,
@@ -71,23 +76,6 @@ namespace Library.Admin
 
         private void getPopularBooks_Click(object sender, EventArgs e)
         {
-            // DateTime dateFrom = dateFrom.SelectedValue.ToString("yyyy-MM-dd");
-
-            //dateFrom.Format = DateTimePickerFormat.Custom;
-            //dateFrom.CustomFormat = @format;
-
-            //dateTill.Format = DateTimePickerFormat.Custom;
-            //dateTill.CustomFormat = @format;
-
-            //var dateF = dateFrom.Value.Date.ToString(@format);
-            //var dateT = dateTill.Value.Date.ToString(@format);
-
-            //Date dtpDate = dateFrom.value.date;
-            //Date dtpTime = dateTill.value.date;
-
-            //String date_from = "#" + dateFrom.Value.Year + "/" + dateFrom.Value.Month + "/" + dateFrom.Value.Day + "#";
-            //String date_till = "#" + dateTill.Value.Year + "/" + dateTill.Value.Month + "/" + dateTill.Value.Day + "#";
-
             DBConnection db = new DBConnection();
             db.openConnection();
 
@@ -98,7 +86,7 @@ namespace Library.Admin
                 "on b.id_book = ex.fk_book) inner join borrowing bo " +
                 "ON bo.ppk_exemplar = ex.id_exemplar " +
 
-                $"where (bo.exodused > {@dateTwoYearsAgo}) and (bo.exodused < {@dateNow}) " +
+                $"where (bo.exodused > NOW()-INTERVAL 2 year) and (bo.exodused < NOW()) " +
                 "GROUP BY b.book_name " +
                 "ORDER BY Count DESC; ", db.getConnection()
                 );
@@ -122,7 +110,7 @@ namespace Library.Admin
                 "on b.id_book = ex.fk_book) inner join borrowing bo " +
                 "ON bo.ppk_exemplar = ex.id_exemplar " +
 
-                $"where (bo.exodused > {@dateTwoYearsAgo}) and (bo.exodused < {@dateNow}) " +
+                $"where (bo.exodused > NOW()-INTERVAL 2 year) and (bo.exodused < NOW()) " +
                 "GROUP BY b.book_name " +
                 "ORDER BY Count; ", db.getConnection()
                 );
@@ -150,6 +138,27 @@ namespace Library.Admin
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
             dataGridView1.DataSource = dataSet.Tables[0];
+        }
+
+        private void bookNameBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            String bookName = bookNameBox.SelectedValue.ToString();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter
+                (
+                    "select price as 'Ціна', book_name as 'Назва книги', id_book " +
+                    "from book " +
+                    $"where book_name = '{bookName}';", db.getConnection()
+                );
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+
+            db.closeConnection();
         }
     }
 }
