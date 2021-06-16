@@ -414,13 +414,45 @@ namespace Library
 
             db.closeConnection();
         }
-
+        public int numExemp=0;
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex>=0) {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 textBox1.Text = row.Cells["id_exemplar"].Value.ToString();
+                numExemp = int.Parse(row.Cells["id_exemplar"].Value.ToString());
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (numExemp ==0) {
+                MessageBox.Show("Оберіть екземпляр!");
+            }
+            else{
+                DBConnection db = new DBConnection();
+                db.openConnection();
+
+                MySqlCommand command =
+              new MySqlCommand(
+                  "INSERT INTO borrowing (ppk_reader, ppk_exemplar, exodused, expected_return, real_return) VALUES " +
+              "(@idRead, @id_exemp,@exodused ,@expected_return, @real_return)", db.getConnection());
+                //SignIn.userId
+                //command.Prepare();
+                command.Parameters.AddWithValue("@idRead", 6);
+                command.Parameters.AddWithValue("@id_exemp", numExemp);
+                command.Parameters.AddWithValue("@exodused", DateTime.Now.ToString("yyyy/MM/dd"));
+                command.Parameters.AddWithValue("@expected_return", DateTime.Today.AddDays(14).ToString("yyyy/MM/dd"));
+                command.Parameters.AddWithValue("@real_return", DBNull.Value);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                MessageBox.Show("Ви взяли книгу на 2 тижні, " +
+                    "змінити термін можна у розділі Мої книги!");
+
+
+                db.closeConnection();
+            }
+
         }
     }
 }

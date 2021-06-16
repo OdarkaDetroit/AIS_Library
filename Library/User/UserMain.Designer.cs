@@ -33,6 +33,8 @@ namespace Library
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -42,14 +44,13 @@ namespace Library
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 13);
+            this.button1.Location = new System.Drawing.Point(19, 19);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(234, 61);
@@ -83,6 +84,7 @@ namespace Library
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label3);
@@ -102,14 +104,32 @@ namespace Library
             this.panel1.Size = new System.Drawing.Size(1106, 599);
             this.panel1.TabIndex = 9;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(844, 121);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(228, 25);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Обрано екземпляр номер";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(844, 164);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(227, 31);
+            this.textBox1.TabIndex = 17;
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(845, 235);
+            this.button2.Location = new System.Drawing.Point(845, 213);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(207, 61);
+            this.button2.Size = new System.Drawing.Size(227, 61);
             this.button2.TabIndex = 16;
             this.button2.Text = "Взяти";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // label3
             // 
@@ -169,9 +189,9 @@ namespace Library
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(833, 13);
+            this.button6.Location = new System.Drawing.Point(838, 19);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(239, 67);
+            this.button6.Size = new System.Drawing.Size(234, 67);
             this.button6.TabIndex = 9;
             this.button6.Text = "вільні книги того жанру що зараз у мене";
             this.button6.UseVisualStyleBackColor = true;
@@ -189,13 +209,6 @@ namespace Library
             this.dataGridView1.Size = new System.Drawing.Size(548, 283);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(877, 162);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 31);
-            this.textBox1.TabIndex = 17;
             // 
             // UserMain
             // 
@@ -229,5 +242,6 @@ namespace Library
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
