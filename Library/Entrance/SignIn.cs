@@ -16,10 +16,6 @@ namespace Library.Entrance
     public partial class SignIn : Form
     {
 
-
-        //public enum AccessBD { "User", "Librarian", "Administrator" }
-        ///public List<string> Roles { get; set; } = new List<string> { "User", "Librarian", "Administrator" };
-
         public static string emailParam;
 
         public static int userId;
