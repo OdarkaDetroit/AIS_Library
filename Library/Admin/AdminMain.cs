@@ -11,7 +11,9 @@ namespace Library.Admin
 {
     public partial class AdminMain : Form
     {
-        string @format = "yyyy-MM-dd";  //date format
+        //string @format = "yyyy-MM-dd";  //date format
+        string @dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+        string @dateTwoYearsAgo = DateTime.Now.AddYears(-2).ToString("yyyy-MM-dd");
 
         public AdminMain()
         {
@@ -77,14 +79,14 @@ namespace Library.Admin
             //dateTill.Format = DateTimePickerFormat.Custom;
             //dateTill.CustomFormat = @format;
 
-            //String dateF = dateFrom.Value.Date.ToString(@format);
-            //String dateT = dateTill.Value.Date.ToString(@format);
+            //var dateF = dateFrom.Value.Date.ToString(@format);
+            //var dateT = dateTill.Value.Date.ToString(@format);
 
             //Date dtpDate = dateFrom.value.date;
             //Date dtpTime = dateTill.value.date;
 
-            String date_from = "#" + dateFrom.Value.Year + "/" + dateFrom.Value.Month + "/" + dateFrom.Value.Day + "#";
-            String date_till = "#" + dateTill.Value.Year + "/" + dateTill.Value.Month + "/" + dateTill.Value.Day + "#";
+            //String date_from = "#" + dateFrom.Value.Year + "/" + dateFrom.Value.Month + "/" + dateFrom.Value.Day + "#";
+            //String date_till = "#" + dateTill.Value.Year + "/" + dateTill.Value.Month + "/" + dateTill.Value.Day + "#";
 
             DBConnection db = new DBConnection();
             db.openConnection();
@@ -96,7 +98,7 @@ namespace Library.Admin
                 "on b.id_book = ex.fk_book) inner join borrowing bo " +
                 "ON bo.ppk_exemplar = ex.id_exemplar " +
 
-                "where (bo.exodused > {date_from}) and (bo.exodused < {date_till}) " +
+                $"where (bo.exodused > {@dateTwoYearsAgo}) and (bo.exodused < {@dateNow}) " +
                 "GROUP BY b.book_name " +
                 "ORDER BY Count DESC; ", db.getConnection()
                 );
@@ -110,9 +112,6 @@ namespace Library.Admin
 
         private void getUnpopularBooks_Click(object sender, EventArgs e)
         {
-            String date_from = "#" + dateFrom.Value.Year + "/" + dateFrom.Value.Month + "/" + dateFrom.Value.Day + "#";
-            String date_till = "#" + dateTill.Value.Year + "/" + dateTill.Value.Month + "/" + dateTill.Value.Day + "#";
-
             DBConnection db = new DBConnection();
             db.openConnection();
 
@@ -123,7 +122,7 @@ namespace Library.Admin
                 "on b.id_book = ex.fk_book) inner join borrowing bo " +
                 "ON bo.ppk_exemplar = ex.id_exemplar " +
 
-                "where (bo.exodused > {date_from}) and (bo.exodused < {date_till}) " +
+                $"where (bo.exodused > {@dateTwoYearsAgo}) and (bo.exodused < {@dateNow}) " +
                 "GROUP BY b.book_name " +
                 "ORDER BY Count; ", db.getConnection()
                 );
@@ -133,6 +132,24 @@ namespace Library.Admin
             dataGridView1.DataSource = dataSet.Tables[0];
 
             db.closeConnection();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter
+                (
+                "SELECT DISTINCT id_reader, sec_name as 'Прізвище', first_name as 'Ім''я', email as 'Е-mail' " +
+                "FROM reader r INNER JOIN borrowing bo " +
+                "ON r.id_reader = bo.ppk_reader " +
+                "WHERE (real_return IS NULL) AND (expected_return < current_date()); ", db.getConnection()
+                );
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
         }
     }
 }
