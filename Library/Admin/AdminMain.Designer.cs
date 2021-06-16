@@ -33,7 +33,6 @@ namespace Library.Admin
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -47,6 +46,8 @@ namespace Library.Admin
             this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.bookNameBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -91,20 +92,12 @@ namespace Library.Admin
             this.button2.Text = "Інфо про боржника";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(745, 89);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 56);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Книги та ціни \r\nна примірники";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.bookNameBox);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
@@ -239,6 +232,24 @@ namespace Library.Admin
             this.comboBox2.Size = new System.Drawing.Size(151, 28);
             this.comboBox2.TabIndex = 0;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(734, 271);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 20);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Ціна книги";
+            // 
+            // bookNameBox
+            // 
+            this.bookNameBox.FormattingEnabled = true;
+            this.bookNameBox.Location = new System.Drawing.Point(734, 294);
+            this.bookNameBox.Name = "bookNameBox";
+            this.bookNameBox.Size = new System.Drawing.Size(151, 28);
+            this.bookNameBox.TabIndex = 7;
+            this.bookNameBox.SelectedIndexChanged += new System.EventHandler(this.bookNameBox_SelectedIndexChanged);
+            // 
             // AdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -267,7 +278,6 @@ namespace Library.Admin
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -281,5 +291,7 @@ namespace Library.Admin
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox bookNameBox;
     }
 }
