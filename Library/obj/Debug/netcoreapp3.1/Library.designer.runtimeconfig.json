@@ -6,8 +6,8 @@
       "version": "3.1.0"
     },
     "additionalProbingPaths": [
-      "C:\\Users\\Владелец\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Владелец\\.nuget\\packages"
+      "C:\\Users\\dasha\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\dasha\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

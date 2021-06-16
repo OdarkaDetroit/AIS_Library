@@ -9,6 +9,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+using static Library.PasswordManipulations;
+
 namespace Library.Entrance
 {
     public partial class WorkSignIn : Form
@@ -31,8 +33,7 @@ namespace Library.Entrance
             db.openConnection();
 
             emailParam = textBox1.Text;
-
-            string password = textBox2.Text;
+            string password = EncodePasswordToBase64(textBox2.Text);
 
             MySqlCommand sqlCom1 = new MySqlCommand($"SELECT * FROM worker WHERE email = '{emailParam}' AND password = '{password}'", db.getConnection());
 
