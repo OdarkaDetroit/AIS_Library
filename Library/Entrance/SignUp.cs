@@ -15,6 +15,8 @@ namespace Library
 {
     public partial class SignUp : Form
     {
+        DateTime localDate = DateTime.Now;
+
         public SignUp()
         {
             InitializeComponent();
@@ -66,6 +68,8 @@ namespace Library
             string email = textBox9.Text;
             string pass = textBox10.Text;
 
+            TimeSpan span = localDate.Subtract(bdate);
+
             if (CheckEmail())
             {
                 MessageBox.Show("Ця електронна скринька вже використовується");
@@ -75,7 +79,8 @@ namespace Library
                 if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text)
                     || string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text)
                     || string.IsNullOrWhiteSpace(textBox6.Text) || string.IsNullOrWhiteSpace(dateTimePicker1.Text)
-                    || string.IsNullOrWhiteSpace(textBox9.Text) || string.IsNullOrWhiteSpace(textBox10.Text))
+                    || string.IsNullOrWhiteSpace(textBox9.Text) || string.IsNullOrWhiteSpace(textBox10.Text)
+                    || bdate == default(DateTime) || (span.Days < 6205))
                 {
                     MessageBox.Show("Акаунт не створено - не всі необхідні дані надані");
                 }
@@ -130,29 +135,6 @@ namespace Library
 
                 db.closeConnection();
             }
-
-            //some visual changes, no value
-
-            //private void textBox1_TextChanged(object sender, EventArgs e)
-            //{
-            //    String secName = textBox1.Text;
-            //    if(secName.Equals("second name"))
-            //    {
-            //        textBox1.Text = "";
-            //    }
-            //}
-
-            //private void textBox2_TextChanged(object sender, EventArgs e)
-            //{
-            //    String firName = textBox2.Text;
-            //    if (firName.Equals("first name"))
-            //    {
-            //        textBox2.Text = "";
-            //    }
-            //}
-
-
-
         }
     }
 }

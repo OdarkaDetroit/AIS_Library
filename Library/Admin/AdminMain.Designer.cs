@@ -34,20 +34,16 @@ namespace Library.Admin
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.bookNameBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.getUnpopularBooks = new System.Windows.Forms.Button();
             this.getPopularBooks = new System.Windows.Forms.Button();
-            this.dateTill = new System.Windows.Forms.DateTimePicker();
-            this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.bookNameBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -105,6 +101,24 @@ namespace Library.Admin
             this.panel1.Size = new System.Drawing.Size(905, 437);
             this.panel1.TabIndex = 5;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(734, 271);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 20);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Ціна книги";
+            // 
+            // bookNameBox
+            // 
+            this.bookNameBox.FormattingEnabled = true;
+            this.bookNameBox.Location = new System.Drawing.Point(734, 294);
+            this.bookNameBox.Name = "bookNameBox";
+            this.bookNameBox.Size = new System.Drawing.Size(151, 28);
+            this.bookNameBox.TabIndex = 7;
+            this.bookNameBox.SelectedIndexChanged += new System.EventHandler(this.bookNameBox_SelectedIndexChanged);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -127,12 +141,8 @@ namespace Library.Admin
             // 
             this.panel2.BackColor = System.Drawing.Color.Lavender;
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.getUnpopularBooks);
             this.panel2.Controls.Add(this.getPopularBooks);
-            this.panel2.Controls.Add(this.dateTill);
-            this.panel2.Controls.Add(this.dateFrom);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Location = new System.Drawing.Point(12, 444);
@@ -146,40 +156,18 @@ namespace Library.Admin
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(278, 8);
+            this.label6.Location = new System.Drawing.Point(23, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 17);
             this.label6.TabIndex = 11;
             this.label6.Text = "Отримати...";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(9, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 17);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Оберіть кінцеву дату";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label4.Location = new System.Drawing.Point(9, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Оберіть початкову дату";
             // 
             // getUnpopularBooks
             // 
             this.getUnpopularBooks.BackColor = System.Drawing.Color.LightSteelBlue;
             this.getUnpopularBooks.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.getUnpopularBooks.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.getUnpopularBooks.Location = new System.Drawing.Point(278, 78);
+            this.getUnpopularBooks.Location = new System.Drawing.Point(23, 81);
             this.getUnpopularBooks.Name = "getUnpopularBooks";
             this.getUnpopularBooks.Size = new System.Drawing.Size(140, 53);
             this.getUnpopularBooks.TabIndex = 9;
@@ -192,7 +180,7 @@ namespace Library.Admin
             this.getPopularBooks.BackColor = System.Drawing.Color.LightSteelBlue;
             this.getPopularBooks.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.getPopularBooks.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.getPopularBooks.Location = new System.Drawing.Point(278, 26);
+            this.getPopularBooks.Location = new System.Drawing.Point(23, 29);
             this.getPopularBooks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.getPopularBooks.Name = "getPopularBooks";
             this.getPopularBooks.Size = new System.Drawing.Size(140, 35);
@@ -200,20 +188,6 @@ namespace Library.Admin
             this.getPopularBooks.Text = "Популярні книги";
             this.getPopularBooks.UseVisualStyleBackColor = false;
             this.getPopularBooks.Click += new System.EventHandler(this.getPopularBooks_Click);
-            // 
-            // dateTill
-            // 
-            this.dateTill.Location = new System.Drawing.Point(9, 78);
-            this.dateTill.Name = "dateTill";
-            this.dateTill.Size = new System.Drawing.Size(250, 27);
-            this.dateTill.TabIndex = 8;
-            // 
-            // dateFrom
-            // 
-            this.dateFrom.Location = new System.Drawing.Point(9, 26);
-            this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Size = new System.Drawing.Size(250, 27);
-            this.dateFrom.TabIndex = 7;
             // 
             // label3
             // 
@@ -231,24 +205,6 @@ namespace Library.Admin
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(151, 28);
             this.comboBox2.TabIndex = 0;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(734, 271);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 20);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Ціна книги";
-            // 
-            // bookNameBox
-            // 
-            this.bookNameBox.FormattingEnabled = true;
-            this.bookNameBox.Location = new System.Drawing.Point(734, 294);
-            this.bookNameBox.Name = "bookNameBox";
-            this.bookNameBox.Size = new System.Drawing.Size(151, 28);
-            this.bookNameBox.TabIndex = 7;
-            this.bookNameBox.SelectedIndexChanged += new System.EventHandler(this.bookNameBox_SelectedIndexChanged);
             // 
             // AdminMain
             // 
@@ -285,11 +241,7 @@ namespace Library.Admin
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button getPopularBooks;
-        private System.Windows.Forms.DateTimePicker dateTill;
-        private System.Windows.Forms.DateTimePicker dateFrom;
         private System.Windows.Forms.Button getUnpopularBooks;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox bookNameBox;
