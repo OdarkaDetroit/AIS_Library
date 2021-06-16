@@ -96,7 +96,7 @@ namespace Library.Admin
                 "on b.id_book = ex.fk_book) inner join borrowing bo " +
                 "ON bo.ppk_exemplar = ex.id_exemplar " +
 
-                "where (bo.exodused > {date_from}) and (bo.exodused < {date_till}) " +
+                $"where (bo.exodused > {date_from}) and (bo.exodused < {date_till}) " +
                 "GROUP BY b.book_name " +
                 "ORDER BY Count DESC; ", db.getConnection()
                 );

@@ -33,6 +33,7 @@ namespace Library
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,7 +42,7 @@ namespace Library
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +60,7 @@ namespace Library
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(833, 356);
+            this.button4.Location = new System.Drawing.Point(833, 398);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(175, 61);
@@ -82,6 +83,7 @@ namespace Library
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.comboBox3);
@@ -99,6 +101,15 @@ namespace Library
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1106, 599);
             this.panel1.TabIndex = 9;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(845, 235);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(207, 61);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Взяти";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -177,15 +188,14 @@ namespace Library
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(548, 283);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
-            // button2
+            // textBox1
             // 
-            this.button2.Location = new System.Drawing.Point(845, 235);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(207, 61);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Взяти";
-            this.button2.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(877, 162);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(150, 31);
+            this.textBox1.TabIndex = 17;
             // 
             // UserMain
             // 
@@ -218,5 +228,6 @@ namespace Library
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

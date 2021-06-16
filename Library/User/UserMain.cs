@@ -414,5 +414,13 @@ namespace Library
 
             db.closeConnection();
         }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex>=0) {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                textBox1.Text = row.Cells["id_exemplar"].Value.ToString();
+            }
+        }
     }
 }
