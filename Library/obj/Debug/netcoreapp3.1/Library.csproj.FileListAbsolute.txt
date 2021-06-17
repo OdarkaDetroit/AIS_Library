@@ -149,3 +149,4 @@ C:\Users\dasha\Source\Repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\
 C:\Users\dasha\Source\Repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.ChangeTerm.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.AddExemplar.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.WriteOff.resources
+C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.Lost.resources

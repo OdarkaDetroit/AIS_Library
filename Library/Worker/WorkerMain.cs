@@ -39,6 +39,12 @@ namespace Library.Worker
             Visible = false;
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            _ = new Lost { Visible = true };
+            Visible = false;
+        }
     }
     
 }

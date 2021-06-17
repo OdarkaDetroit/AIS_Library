@@ -34,6 +34,7 @@ namespace Library.Worker
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lendingBook = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -76,6 +77,7 @@ namespace Library.Worker
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.lendingBook);
             this.panel2.Controls.Add(this.button2);
@@ -85,6 +87,16 @@ namespace Library.Worker
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(244, 721);
             this.panel2.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(30, 536);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(186, 80);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Загублення";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
@@ -138,5 +150,6 @@ namespace Library.Worker
         private System.Windows.Forms.Button lendingBook;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button button3;
     }
 }

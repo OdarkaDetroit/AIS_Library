@@ -75,5 +75,11 @@ namespace Library.Entrance
 
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _ = new SignIn { Visible = true };
+            Visible = false;
+        }
     }
 }
