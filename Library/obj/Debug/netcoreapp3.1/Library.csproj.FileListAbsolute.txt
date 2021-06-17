@@ -114,7 +114,6 @@ C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\bin\Debug\
 C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\bin\Debug\netcoreapp3.1\MySqlConnector.dll
 C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.csprojAssemblyReference.cache
 C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Admin.AdminMain.resources
-C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Admin.PriceControl.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.SignIn.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.SignUp.resources
 C:\Users\dasha\source\repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Form1.resources

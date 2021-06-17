@@ -1,5 +1,6 @@
 using Library.Admin;
 using Library.Entrance;
+using Library.Worker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Library
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SignIn());
+            Application.Run(new AddBook());
             //Application.Run(new UserMain());
         }
     }

@@ -14,5 +14,11 @@ namespace Library.Worker
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _ = new AddBook { Visible = true };
+            Visible = false;
+        }
     }
 }
