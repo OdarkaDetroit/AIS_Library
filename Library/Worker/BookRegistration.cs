@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Library.Worker
 {
-    public partial class AddBook : Form
+    public partial class BookRegistration : Form
     {
-        public AddBook()
+        public BookRegistration()
         {
             InitializeComponent();
         }
@@ -97,6 +97,12 @@ namespace Library.Worker
             itemGrid.DataSource = dataSet.Tables[0];
 
             db.closeConnection();
+        }
+
+        private void authorAdding_Click(object sender, EventArgs e)
+        {
+            _ = new AddAuthor { Visible = true };
+            Visible = false;
         }
     }
 }
