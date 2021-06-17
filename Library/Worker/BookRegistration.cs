@@ -23,14 +23,18 @@ namespace Library.Worker
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
                 (
-                @"select second_name as 'Прізвище', initials as 'Ініціали', count(ppk_book) as 'Кількість книг'
-                       from authors au left
-                       join author_book_connect abc on au.second_name = abc.ppk_author
-                       where ppk_book in
-                            (select id_book
-                            from book)
-                group by second_name, initials; ", db.getConnection()
-                );
+                @"select second_name as 'Прізвище', initials as 'Ініціали'
+                           from authors 
+                    group by second_name, initials;", db.getConnection()
+
+            //@"select second_name as 'Прізвище', initials as 'Ініціали', count(ppk_book) as 'Кількість книг'
+            //           from authors au left
+            //           join author_book_connect abc on au.second_name = abc.ppk_author
+            //           where ppk_book in
+            //                (select id_book
+            //                from book)
+            //    group by second_name, initials; ", db.getConnection()
+                ) ;
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
             authorGrid.DataSource = dataSet.Tables[0];
