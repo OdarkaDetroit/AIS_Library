@@ -27,8 +27,11 @@ namespace Library.Worker
             Visible = false;
         }
 
-
-    
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _ = new ChangeTerm { Visible = true };
+            Visible = false;
+        }
     }
     
 }

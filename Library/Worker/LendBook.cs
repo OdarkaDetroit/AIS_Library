@@ -89,8 +89,7 @@ namespace Library.Worker
                 {
                     textBox2.Text = row.Cells["id_reader"].Value.ToString();
                     id_read = int.Parse(row.Cells["id_reader"].Value.ToString());
-                    textBox3.Text = row.Cells["id_exemplar"].Value.ToString();
-                    numExemp = int.Parse(row.Cells["id_exemplar"].Value.ToString());
+                   
                 }
                 catch { };
                 try
@@ -114,8 +113,7 @@ namespace Library.Worker
                 {
                     textBox2.Text = row.Cells["id_reader"].Value.ToString();
                     id_read = int.Parse(row.Cells["id_reader"].Value.ToString());
-                    textBox3.Text = row.Cells["id_exemplar"].Value.ToString();
-                    numExemp = int.Parse(row.Cells["id_exemplar"].Value.ToString());
+                  
                 }
                 catch { };
                 try
