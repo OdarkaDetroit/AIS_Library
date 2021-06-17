@@ -35,6 +35,7 @@ namespace Library.Worker
             this.panel2 = new System.Windows.Forms.Panel();
             this.returnBook = new System.Windows.Forms.Button();
             this.lendingBook = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +74,7 @@ namespace Library.Worker
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.returnBook);
             this.panel2.Controls.Add(this.lendingBook);
             this.panel2.Controls.Add(this.button2);
@@ -86,7 +88,7 @@ namespace Library.Worker
             // returnBook
             // 
             this.returnBook.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.returnBook.Location = new System.Drawing.Point(30, 404);
+            this.returnBook.Location = new System.Drawing.Point(30, 521);
             this.returnBook.Margin = new System.Windows.Forms.Padding(4);
             this.returnBook.Name = "returnBook";
             this.returnBook.Size = new System.Drawing.Size(186, 80);
@@ -105,6 +107,16 @@ namespace Library.Worker
             this.lendingBook.Text = "Видача книг";
             this.lendingBook.UseVisualStyleBackColor = false;
             this.lendingBook.Click += new System.EventHandler(this.lendingBook_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(30, 405);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(186, 80);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Зміна терміну\r\nповернення";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // WorkerMain
             // 
@@ -129,5 +141,6 @@ namespace Library.Worker
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button lendingBook;
         private System.Windows.Forms.Button returnBook;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -21,7 +21,7 @@ namespace Library
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new WorkerMain());
-            //Application.Run(new UserMain());
+           // Application.Run(new ChangeTerm());
         }
     }
 }
