@@ -108,5 +108,23 @@ namespace Library.Worker
             _ = new AddAuthor { Visible = true };
             Visible = false;
         }
+
+        private void genreAdding_Click(object sender, EventArgs e)
+        {
+            _ = new AddGenre { Visible = true };
+            Visible = false;
+        }
+
+        private void bookAdding_Click(object sender, EventArgs e)
+        {
+            _ = new AddBook { Visible = true };
+            Visible = false;
+        }
+
+        private void itemAdding_Click(object sender, EventArgs e)
+        {
+            _ = new AddExemplar { Visible = true };
+            Visible = false;
+        }
     }
 }

@@ -37,6 +37,9 @@
     <Compile Update="Worker\AddAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Worker\AddExemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Worker\BookRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
