@@ -15,7 +15,9 @@ namespace Library
 {
     public partial class UserMain : Form
     {
-        
+
+        int userId = SignIn.userId;
+
         public UserMain()
         {
             InitializeComponent();

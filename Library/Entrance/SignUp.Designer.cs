@@ -55,8 +55,12 @@ namespace Library
             this.label12 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -193,10 +197,10 @@ namespace Library
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(47, 518);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(108, 20);
+            this.label9.Size = new System.Drawing.Size(105, 20);
             this.label9.TabIndex = 14;
             this.label9.Text = "Місце роботи";
             // 
@@ -264,24 +268,58 @@ namespace Library
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.Location = new System.Drawing.Point(394, 347);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(225, 20);
+            this.label12.Size = new System.Drawing.Size(167, 40);
             this.label12.TabIndex = 22;
-            this.label12.Text = "Пароль (не менше 8 значень)";
+            this.label12.Text = "Пароль\r\n(не менше 8 значень)";
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(394, 370);
+            this.textBox10.Location = new System.Drawing.Point(13, 128);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(250, 27);
             this.textBox10.TabIndex = 21;
+            this.textBox10.UseSystemPasswordChar = true;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Info;
+            this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.textBox10);
+            this.panel3.Controls.Add(this.textBox11);
             this.panel3.Location = new System.Drawing.Point(381, 263);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(278, 187);
+            this.panel3.Size = new System.Drawing.Size(278, 245);
             this.panel3.TabIndex = 19;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBox1.Location = new System.Drawing.Point(186, 90);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(61, 32);
+            this.checkBox1.TabIndex = 23;
+            this.checkBox1.Text = "👀";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(13, 161);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(163, 40);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Мобільний телефон \r\n(10 знаків після +38)";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(13, 204);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(250, 27);
+            this.textBox11.TabIndex = 23;
             // 
             // panel4
             // 
@@ -308,7 +346,6 @@ namespace Library
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 618);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox10);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.dateTimePicker1);
@@ -336,6 +373,8 @@ namespace Library
             this.Controls.Add(this.panel4);
             this.Name = "SignUp";
             this.Text = "Form2";
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -372,5 +411,8 @@ namespace Library
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

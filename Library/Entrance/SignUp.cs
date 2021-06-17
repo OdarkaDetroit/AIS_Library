@@ -15,6 +15,8 @@ namespace Library
 {
     public partial class SignUp : Form
     {
+        DateTime localDate = DateTime.Now;
+
         public SignUp()
         {
             InitializeComponent();
@@ -24,13 +26,11 @@ namespace Library
         public Boolean CheckEmail()
         {
             DBConnection db1 = new DBConnection();
-
             db1.openConnection();
 
             String email = textBox9.Text;
 
             MySqlCommand sqlCom2 = new MySqlCommand($"SELECT * FROM reader WHERE email = '{email}'", db1.getConnection());
-
             MySqlDataReader reader = sqlCom2.ExecuteReader();
 
             if (reader.HasRows)
@@ -41,7 +41,27 @@ namespace Library
             else { return false; }
 
             db1.closeConnection();
+        }
 
+        // перевірка на вже існуючий telephone у БД
+        public Boolean CheckPhone()
+        {
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            String telenum = textBox9.Text;
+
+            MySqlCommand sqlCom2 = new MySqlCommand($"SELECT * FROM telephones WHERE telenum = '{telenum}'", db.getConnection());
+            MySqlDataReader reader = sqlCom2.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                //MessageBox.Show("Такий мобільний номер вже використовується кимось");
+                return true;
+            }
+            else { return false; }
+
+            db.closeConnection();
         }
 
 
@@ -65,17 +85,22 @@ namespace Library
             DateTime bdate = dateTimePicker1.Value;
             string email = textBox9.Text;
             string pass = textBox10.Text;
+            string telenum = textBox11.Text;
 
-            if (CheckEmail())
+            TimeSpan span = localDate.Subtract(bdate);
+
+            if (CheckEmail() || CheckPhone())
             {
-                MessageBox.Show("Ця електронна скринька вже використовується");
+                MessageBox.Show("Ця електронна скринька або/та цей номер телефону вже використовується");
             }
             else
             {
                 if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text)
                     || string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text)
                     || string.IsNullOrWhiteSpace(textBox6.Text) || string.IsNullOrWhiteSpace(dateTimePicker1.Text)
-                    || string.IsNullOrWhiteSpace(textBox9.Text) || string.IsNullOrWhiteSpace(textBox10.Text))
+                    || string.IsNullOrWhiteSpace(textBox9.Text) || string.IsNullOrWhiteSpace(textBox10.Text)
+                    || bdate == default(DateTime) || (span.Days < 6205) || string.IsNullOrWhiteSpace(textBox11.Text)
+                    || (textBox10.Text.Length < 8))
                 {
                     MessageBox.Show("Акаунт не створено - не всі необхідні дані надані");
                 }
@@ -125,34 +150,21 @@ namespace Library
 
                             _ = new UserMain { Visible = true };
                             Visible = false;
-
                 }
-
                 db.closeConnection();
             }
+        }
 
-            //some visual changes, no value
-
-            //private void textBox1_TextChanged(object sender, EventArgs e)
-            //{
-            //    String secName = textBox1.Text;
-            //    if(secName.Equals("second name"))
-            //    {
-            //        textBox1.Text = "";
-            //    }
-            //}
-
-            //private void textBox2_TextChanged(object sender, EventArgs e)
-            //{
-            //    String firName = textBox2.Text;
-            //    if (firName.Equals("first name"))
-            //    {
-            //        textBox2.Text = "";
-            //    }
-            //}
-
-
-
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked==true)
+            {
+                textBox10.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBox10.UseSystemPasswordChar = true;
+            }
         }
     }
 }
