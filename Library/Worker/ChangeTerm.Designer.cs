@@ -42,6 +42,7 @@ namespace Library.Worker
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +50,7 @@ namespace Library.Worker
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label4);
@@ -68,9 +70,9 @@ namespace Library.Worker
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(624, 374);
+            this.button3.Location = new System.Drawing.Point(624, 382);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(167, 76);
+            this.button3.Size = new System.Drawing.Size(167, 68);
             this.button3.TabIndex = 11;
             this.button3.Text = "Повернутися\r\nдо меню";
             this.button3.UseVisualStyleBackColor = true;
@@ -80,7 +82,7 @@ namespace Library.Worker
             // 
             this.button2.Location = new System.Drawing.Point(624, 189);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(167, 87);
+            this.button2.Size = new System.Drawing.Size(167, 63);
             this.button2.TabIndex = 10;
             this.button2.Text = "Змінити дату\r\nповернення";
             this.button2.UseVisualStyleBackColor = true;
@@ -180,6 +182,16 @@ namespace Library.Worker
             this.label1.Text = "Прізвище читача";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(624, 281);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(167, 68);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "Повернути\r\nпримірник";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // ChangeTerm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -210,5 +222,6 @@ namespace Library.Worker
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button button4;
     }
 }

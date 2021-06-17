@@ -117,5 +117,39 @@ namespace Library.Worker
             _ = new WorkerMain { Visible = true };
             Visible = false;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (numExemp == 0)
+            {
+                MessageBox.Show("Оберіть екземпляр!");
+            }
+            else if (id_read == 0)
+            {
+                MessageBox.Show("Оберіть читача!");
+            }
+            else
+            {
+                DBConnection db = new DBConnection();
+                db.openConnection();
+
+                MySqlCommand command =
+              new MySqlCommand(
+                  "update borrowing " +
+                    "set real_return =CURDATE()" +
+                    " Where ppk_exemplar = @id_exemp and ppk_reader = @idRead ", db.getConnection()) ;
+                //SignIn.userId
+                //command.Prepare();
+                command.Parameters.AddWithValue("@idRead", id_read);
+                command.Parameters.AddWithValue("@id_exemp", numExemp);
+                //command.Parameters.AddWithValue("@exodused", dateTimePicker1.Value.Date.ToString("yyyy/MM/dd"));
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                MessageBox.Show("Книгу повернуто! ");
+
+                db.closeConnection();
+            }
+        }
     }
 }
