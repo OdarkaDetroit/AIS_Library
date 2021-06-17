@@ -129,10 +129,14 @@ namespace Library.Admin
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
                 (
-                "SELECT DISTINCT id_reader, sec_name as 'Прізвище', first_name as 'Ім''я', email as 'Е-mail' " +
-                "FROM reader r INNER JOIN borrowing bo " +
-                "ON r.id_reader = bo.ppk_reader " +
-                "WHERE (real_return IS NULL) AND (expected_return < current_date()); ", db.getConnection()
+                "SELECT DISTINCT id_reader, sec_name as 'Прізвище', first_name as 'Ім''я', email as 'Е-mail', " +
+                "GROUP_CONCAT(telenum SEPARATOR ',') as 'Номер телефону' " +
+                "from(reader left join telephones on telephones.fk_reader = reader.id_reader) " +
+                "where id_reader in " +
+                "(select distinct ppk_reader " +
+                "from borrowing " +
+                "where (real_return is null) and(expected_return < current_date())) " +
+                "group by id_reader, sec_name, first_name;", db.getConnection()
                 );
 
             DataSet dataSet = new DataSet();

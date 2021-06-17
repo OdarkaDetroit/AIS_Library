@@ -276,7 +276,6 @@ namespace Library
             // 
             this.textBox10.Location = new System.Drawing.Point(13, 128);
             this.textBox10.Name = "textBox10";
-            this.textBox10.PasswordChar = '•';
             this.textBox10.Size = new System.Drawing.Size(250, 27);
             this.textBox10.TabIndex = 21;
             this.textBox10.UseSystemPasswordChar = true;
@@ -311,9 +310,9 @@ namespace Library
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label13.Location = new System.Drawing.Point(13, 161);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(161, 40);
+            this.label13.Size = new System.Drawing.Size(163, 40);
             this.label13.TabIndex = 24;
-            this.label13.Text = "Мобільний телефон \r\n(10 знаків після 098)";
+            this.label13.Text = "Мобільний телефон \r\n(10 знаків після +38)";
             // 
             // textBox11
             // 
