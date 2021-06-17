@@ -40,6 +40,9 @@
     <Compile Update="Worker\BookRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Worker\LendBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Worker\WorkerMain.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -75,7 +75,6 @@ C:\AIS_Library\Library\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
 C:\AIS_Library\Library\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.csproj.AssemblyReference.cache
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Admin.AdminMain.resources
-C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Admin.PriceControl.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.SignIn.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.SignUp.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Form1.resources
@@ -140,3 +139,4 @@ C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBookHistory.resour
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBooks.resources
 C:\Users\dasha\Source\Repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.WorkSignIn.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.WorkSignIn.resources
+C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.LendBook.resources

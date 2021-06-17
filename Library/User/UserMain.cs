@@ -491,7 +491,21 @@ namespace Library
                 
             }
         }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                try
+                {
+                    textBox1.Text = row.Cells["id_exemplar"].Value.ToString();
+                    numExemp = int.Parse(row.Cells["id_exemplar"].Value.ToString());
+                }
+                catch { };
 
+
+            }
+        }
         private void button2_Click_1(object sender, EventArgs e)
         {
             if (numExemp ==0) {
@@ -560,6 +574,6 @@ namespace Library
             db.closeConnection();
         }
 
-       
+        
     }
 }

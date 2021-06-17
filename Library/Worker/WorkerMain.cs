@@ -14,5 +14,11 @@ namespace Library.Worker
         {
             InitializeComponent();
         }
+
+        private void lendingBook_Click(object sender, EventArgs e)
+        {
+            _ = new LendBook { Visible = true };
+            Visible = false;
+        }
     }
 }
