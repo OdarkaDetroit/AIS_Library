@@ -408,7 +408,7 @@ namespace Library
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
                 (
-               " SELECT id_exemplar ,book_name, publishing_city, publiser_name, publishing_date, pages_num, price, ppk_author" +
+               " SELECT id_exemplar ,book_name, publishing_city, publiser_name, publishing_date, pages_num, price, GROUP_CONCAT(author_book_connect.ppk_author SEPARATOR ', ') as автор" +
                 " FROM (exemplar inner join book on fk_book=id_book) inner join author_book_connect on id_book=ppk_book" +
                 " WHERE id_exemplar not in " +
                 " (Select ppk_exemplar " +
@@ -419,7 +419,8 @@ namespace Library
                 $" WHERE book_name = '{book}')" +
                 " and id_exemplar not in(" +
                 " select old_exemp" +
-                " from changes)" 
+                " from changes) "+
+                "group by  id_exemplar ,book_name, publishing_city, publiser_name, publishing_date, pages_num, price "
                , db.getConnection()
                );
 
@@ -479,7 +480,7 @@ namespace Library
         public int numExemp=0;
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) {
+            if (e.RowIndex > -1) {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 try
                 {

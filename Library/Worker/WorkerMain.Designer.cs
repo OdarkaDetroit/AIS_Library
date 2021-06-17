@@ -50,6 +50,7 @@ namespace Library.Worker
             this.deletingBook.TabIndex = 0;
             this.deletingBook.Text = "Списання";
             this.deletingBook.UseVisualStyleBackColor = false;
+            this.deletingBook.Click += new System.EventHandler(this.deletingBook_Click);
             // 
             // button2
             // 
@@ -111,7 +112,7 @@ namespace Library.Worker
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 37);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // WorkerMain
             // 
