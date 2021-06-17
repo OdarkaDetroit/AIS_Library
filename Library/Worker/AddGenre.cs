@@ -8,17 +8,11 @@ using System.Windows.Forms;
 
 namespace Library.Worker
 {
-    public partial class WorkerMain : Form
+    public partial class AddGenre : Form
     {
-        public WorkerMain()
+        public AddGenre()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            _ = new BookRegistration { Visible = true };
-            Visible = false;
         }
     }
 }
