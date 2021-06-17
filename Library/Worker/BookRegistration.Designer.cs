@@ -185,6 +185,7 @@ namespace Library.Worker
             this.genreAdding.TabIndex = 11;
             this.genreAdding.Text = "Додати жанр";
             this.genreAdding.UseVisualStyleBackColor = false;
+            this.genreAdding.Click += new System.EventHandler(this.genreAdding_Click);
             // 
             // bookEdit
             // 
@@ -205,6 +206,7 @@ namespace Library.Worker
             this.bookAdding.TabIndex = 13;
             this.bookAdding.Text = "Додати книгу";
             this.bookAdding.UseVisualStyleBackColor = false;
+            this.bookAdding.Click += new System.EventHandler(this.bookAdding_Click);
             // 
             // itemEdit
             // 
@@ -225,6 +227,7 @@ namespace Library.Worker
             this.itemAdding.TabIndex = 15;
             this.itemAdding.Text = "Додати примірник";
             this.itemAdding.UseVisualStyleBackColor = false;
+            this.itemAdding.Click += new System.EventHandler(this.itemAdding_Click);
             // 
             // panel1
             // 

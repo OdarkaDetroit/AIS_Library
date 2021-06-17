@@ -79,7 +79,7 @@ namespace Library.Worker
 
                     MySqlDataReader reader = command.ExecuteReader();
 
-                    MessageBox.Show("Створено акаунт!");
+                    MessageBox.Show("Автора додано!");
                 }
             }
              db.closeConnection();
