@@ -298,10 +298,10 @@ namespace Library
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
                 (
-               " SELECT book_name, publishing_city, publiser_name, publishing_date, pages_num, price, ppk_author " +
-                " FROM((book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book)" +
-                " inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue )" +
-                " inner join author_book_connect on book.id_book=ppk_book" +
+               " SELECT book_name, publishing_city, publiser_name, publishing_date, pages_num, price " +
+                " FROM (book inner join book_catalogue_connet on book.id_book = book_catalogue_connet.id_book)" +
+                " inner join system_catalogue on system_catalogue.id_catalogue = book_catalogue_connet.id_catalogue " +
+                
                 $" WHERE catalogue_name = '{genre}' and book.id_book in " +
                 " (Select fk_book " +
                 " From exemplar " +
@@ -408,8 +408,8 @@ namespace Library
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
                 (
-               " SELECT id_exemplar ,book_name, publishing_city, publiser_name, publishing_date, pages_num, price, GROUP_CONCAT(author_book_connect.ppk_author SEPARATOR ', ') as автор" +
-                " FROM (exemplar inner join book on fk_book=id_book) inner join author_book_connect on id_book=ppk_book" +
+               " SELECT id_exemplar ,book_name, publishing_city, publiser_name, publishing_date, pages_num, price" +
+                " FROM exemplar inner join book on fk_book=id_book" +
                 " WHERE id_exemplar not in " +
                 " (Select ppk_exemplar " +
                 " From borrowing " +
@@ -420,7 +420,7 @@ namespace Library
                 " and id_exemplar not in(" +
                 " select old_exemp" +
                 " from changes) "+
-                "group by  id_exemplar ,book_name, publishing_city, publiser_name, publishing_date, pages_num, price "
+         
                , db.getConnection()
                );
 
