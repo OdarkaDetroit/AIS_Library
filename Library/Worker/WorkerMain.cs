@@ -32,6 +32,19 @@ namespace Library.Worker
             _ = new ChangeTerm { Visible = true };
             Visible = false;
         }
+
+        private void deletingBook_Click(object sender, EventArgs e)
+        {
+            _ = new WriteOff { Visible = true };
+            Visible = false;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            _ = new Lost { Visible = true };
+            Visible = false;
+        }
     }
     
 }
