@@ -419,7 +419,7 @@ namespace Library
                 $" WHERE book_name = '{book}')" +
                 " and id_exemplar not in(" +
                 " select old_exemp" +
-                " from changes) "+
+                " from changes) "
          
                , db.getConnection()
                );
