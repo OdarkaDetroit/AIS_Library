@@ -15,10 +15,18 @@ namespace Library.Worker
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void lendingBook_Click(object sender, EventArgs e)
         {
-            _ = new BookRegistration { Visible = true };
+            _ = new LendBook { Visible = true };
             Visible = false;
         }
-    }
+
+       
+            private void button2_Click(object sender, EventArgs e)
+            {
+                _ = new AddBook { Visible = true };
+                Visible = false;
+            }
+        }
+    
 }

@@ -33,6 +33,7 @@ namespace Library
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@ namespace Library
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -105,6 +105,16 @@ namespace Library
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1106, 599);
             this.panel1.TabIndex = 9;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(400, 485);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(321, 61);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Популярні книги, що є в бібліотеці";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // label4
             // 
@@ -211,16 +221,6 @@ namespace Library
             this.dataGridView1.Size = new System.Drawing.Size(548, 408);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(400, 485);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(321, 61);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Популярні книги, що є в бібліотеці";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // UserMain
             // 

@@ -20,7 +20,7 @@ namespace Library
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddBook());
+            Application.Run(new WorkerMain());
             //Application.Run(new UserMain());
         }
     }

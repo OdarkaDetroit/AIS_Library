@@ -163,7 +163,7 @@ namespace Library
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
-                (" select id_exemplar,expected_return, book_name, publishing_city, " +
+                (" select expected_return, book_name, publishing_city, " +
                 " publiser_name, publishing_date, pages_num, price" +
                 " from (book inner join exemplar on fk_book=id_book) " +
                 " inner join borrowing on id_exemplar=ppk_exemplar" +
@@ -195,7 +195,7 @@ namespace Library
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
-                (" select id_exemplar,exodused,real_return, book_name, publishing_city, " +
+                (" select exodused,real_return, book_name, publishing_city, " +
                 " publiser_name, publishing_date, pages_num, price" +
                 " from (book inner join exemplar on fk_book=id_book) " +
                 " inner join borrowing on id_exemplar=ppk_exemplar" +
@@ -479,13 +479,33 @@ namespace Library
         public int numExemp=0;
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex>=0) {
+            if (e.RowIndex >= 0) {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                textBox1.Text = row.Cells["id_exemplar"].Value.ToString();
-                numExemp = int.Parse(row.Cells["id_exemplar"].Value.ToString());
+                try
+                {
+                    textBox1.Text = row.Cells["id_exemplar"].Value.ToString();
+                    numExemp = int.Parse(row.Cells["id_exemplar"].Value.ToString());
+                }
+                catch { };
+
+                
             }
         }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                try
+                {
+                    textBox1.Text = row.Cells["id_exemplar"].Value.ToString();
+                    numExemp = int.Parse(row.Cells["id_exemplar"].Value.ToString());
+                }
+                catch { };
 
+
+            }
+        }
         private void button2_Click_1(object sender, EventArgs e)
         {
             if (numExemp ==0) {
@@ -521,29 +541,39 @@ namespace Library
             db.openConnection();
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
-                (" select id_exemplar,expected_return, book_name, publishing_city, " +
-                " publiser_name, publishing_date, pages_num, price" +
-                " from (book inner join exemplar on fk_book=id_book) " +
-                " inner join borrowing on id_exemplar=ppk_exemplar" +
-                $" where ppk_reader='{userId}' and real_return is null", db.getConnection());
+                (" Select count(*) as кількість, id_book,book_name, publishing_city, publiser_name, publishing_date, pages_num, price, ppk_author" +
+                " from ((book inner join exemplar on fk_book=id_book) " +
+                " inner join borrowing on ppk_exemplar=id_exemplar)" +
+                " inner join author_book_connect on ppk_book=id_book" +
+                " where id_exemplar not in(" +
+                " select old_exemp" +
+                " from changes)" +
+                " group by id_book,book_name, publishing_city, publiser_name, publishing_date, pages_num, price, ppk_author" +
+                " order by count(*) desc;", db.getConnection());
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
             dataGridView1.DataSource = dataSet.Tables[0];
-            MySqlCommand authorCom = new MySqlCommand(" select id_exemplar,expected_return, book_name, publishing_city, " +
-                " publiser_name, publishing_date, pages_num, price" +
-                " from (book inner join exemplar on fk_book=id_book) " +
-                " inner join borrowing on id_exemplar=ppk_exemplar" +
-                $" where ppk_reader='{userId}' and real_return is null", db.getConnection());
-            int authorcheck = (int)authorCom.ExecuteScalar();
+            MySqlCommand authorCom = new MySqlCommand(" Select count(*) as кількість, id_book,book_name, publishing_city, publiser_name, publishing_date, pages_num, price, ppk_author" +
+                    " from ((book inner join exemplar on fk_book=id_book) " +
+                    " inner join borrowing on ppk_exemplar=id_exemplar)" +
+                    " inner join author_book_connect on ppk_book=id_book" +
+                    " where id_exemplar not in(" +
+                    " select old_exemp" +
+                    " from changes)" +
+                    " group by id_book,book_name, publishing_city, publiser_name, publishing_date, pages_num, price, ppk_author" +
+                    " order by count(*) desc;", db.getConnection());
+            Int64 authorcheck = (Int64)authorCom.ExecuteScalar();
 
-            if (authorcheck == null)
+            /*if (authorcheck == null)
             {
 
                 MessageBox.Show("Зараз у вас немає ніяких книг!");
-            }
+            }*/
 
             db.closeConnection();
         }
+
+        
     }
 }
