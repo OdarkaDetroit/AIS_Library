@@ -48,6 +48,7 @@ namespace Library.Worker
             this.deletingBook.TabIndex = 0;
             this.deletingBook.Text = "Списання";
             this.deletingBook.UseVisualStyleBackColor = false;
+         
             // 
             // button2
             // 

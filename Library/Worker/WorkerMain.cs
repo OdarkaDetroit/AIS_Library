@@ -27,6 +27,7 @@ namespace Library.Worker
                 _ = new AddBook { Visible = true };
                 Visible = false;
             }
-        }
+
+    }
     
 }

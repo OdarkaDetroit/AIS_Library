@@ -77,8 +77,8 @@ namespace Library.Worker
                 db.closeConnection();
             }
         }
-        public int id_read;
-        public int numExemp;
+        public int id_read=0;
+        public int numExemp=0;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
@@ -205,6 +205,120 @@ namespace Library.Worker
             if (authorcheck == null) { cBook++; }
 
             db.closeConnection();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (numExemp == 0)
+            {
+                MessageBox.Show("Оберіть екземпляр!");
+            }
+            else if (id_read==0) {
+                MessageBox.Show("Оберіть читача!");
+            }
+            else
+            {
+                DBConnection db = new DBConnection();
+                db.openConnection();
+
+                MySqlCommand command =
+              new MySqlCommand(
+                  "INSERT INTO borrowing (ppk_reader, ppk_exemplar, exodused, expected_return, real_return) VALUES " +
+              "(@idRead, @id_exemp,@exodused ,@expected_return, @real_return)", db.getConnection());
+                //SignIn.userId
+                //command.Prepare();
+                command.Parameters.AddWithValue("@idRead", id_read);
+                command.Parameters.AddWithValue("@id_exemp", numExemp);
+                command.Parameters.AddWithValue("@exodused", DateTime.Now.ToString("yyyy/MM/dd"));
+                command.Parameters.AddWithValue("@expected_return", DateTime.Today.AddDays(14).ToString("yyyy/MM/dd"));
+                command.Parameters.AddWithValue("@real_return", DBNull.Value);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                MessageBox.Show("Книга видана на 2 тижні! ");
+                textBox3.Clear();
+                
+                db.closeConnection();
+
+                String book = comboBox1.SelectedValue.ToString();
+                DBConnection d = new DBConnection();
+                d.openConnection();
+
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter
+                    (
+                   " SELECT id_exemplar ,book_name, publishing_city, publiser_name, publishing_date, pages_num, price" +
+                    " FROM exemplar inner join book on fk_book=id_book " +
+                    " WHERE id_exemplar not in " +
+                    " (Select ppk_exemplar " +
+                    " From borrowing " +
+                    " Where real_return is null) and fk_book in " +
+                    " (Select id_book " +
+                    " FROM book " +
+                    $" WHERE book_name = '{book}')" +
+                    " and id_exemplar not in(" +
+                    " select old_exemp" +
+                    " from changes)"
+                   , d.getConnection()
+                   );
+
+                DataSet dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                //dataGridView1.AutoGenerateColumns = false;
+
+                dataGridView1.DataSource = dataSet.Tables[0];
+                dataGridView1.Columns["id_exemplar"].DisplayIndex = 0;
+
+                MySqlCommand authorCom = new MySqlCommand(
+                    " SELECT book_name " +
+                    " FROM (exemplar inner join book on fk_book=id_book) inner join author_book_connect on id_book=ppk_book" +
+                    " WHERE id_exemplar not in " +
+                    " (Select ppk_exemplar " +
+                    " From borrowing " +
+                    " Where real_return is null) and fk_book in " +
+                    " (Select id_book " +
+                    " FROM book " +
+                    $" WHERE book_name = '{book}')" +
+                    " and id_exemplar not in(" +
+                    " select old_exemp" +
+                    " from changes)"
+                    , d.getConnection());
+                string authorcheck = (string)authorCom.ExecuteScalar();
+
+                if (authorcheck == null )
+                {
+
+                 //   MessageBox.Show("Зараз у цієї книги немає вільних екземплярів!");
+                    MySqlDataAdapter dataAdapterIf = new MySqlDataAdapter(
+                 " Select expected_return" +
+                " from borrowing" +
+                " where ppk_exemplar in (" +
+                " 		select id_exemplar" +
+                "         from exemplar" +
+                "         where fk_book in (" +
+                " 					select id_book" +
+                "                     from book " +
+               $"                     where book_name ='{book}' ))" +
+                " and expected_return>= SYSDATE() and real_return is Null" +
+                " ORDER BY expected_return limit 1;"
+                  , db.getConnection()
+                  );
+
+                    DataSet dataSetIf = new DataSet();
+                    dataAdapterIf.Fill(dataSetIf);
+                    //dataGridView1.AutoGenerateColumns = false;
+
+                    dataGridView1.DataSource = dataSetIf.Tables[0];
+
+                }
+               
+
+                d.closeConnection();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            _ = new WorkerMain { Visible = true };
+            Visible = false;
         }
     }
 }
