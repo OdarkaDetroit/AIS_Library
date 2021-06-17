@@ -21,12 +21,14 @@ namespace Library.Worker
             Visible = false;
         }
 
-       
-            private void button2_Click(object sender, EventArgs e)
-            {
-                _ = new AddBook { Visible = true };
-                Visible = false;
-            }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _ = new BookRegistration { Visible = true };
+            Visible = false;
         }
+
+
+    
+    }
     
 }
