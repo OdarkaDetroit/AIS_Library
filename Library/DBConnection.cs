@@ -29,17 +29,17 @@ namespace Library
 
         //      connection = new MySqlConnection(connectionString);
 
-        private MySqlConnection connection = new MySqlConnection("server=" + server
+        /*private MySqlConnection connection = new MySqlConnection("server=" + server
                                + ";port=" + port
                                + ";user id=" + username + ";"
                                + "password=" + password + ";"
-                               + "database=" + database);
+                               + "database=" + database);*/
 
-        /*private MySqlConnection connection = new MySqlConnection("server=" + server
+        private MySqlConnection connection = new MySqlConnection("server=" + server
                        + ";port=" + port
                        + ";user id=" + username + ";"
                        + "password=" + password1 + ";"
-                       + "database=" + database1);*/
+                       + "database=" + database1);
 
         //private MySqlConnection connection = new MySqlConnection("server=localhost;username=root;password=u8s8jDddds2_0;database=lib");
 

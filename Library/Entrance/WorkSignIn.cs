@@ -25,7 +25,7 @@ namespace Library.Entrance
             InitializeComponent();
         }
 
-
+        public static int workerId;
         private void button1_Click(object sender, EventArgs e)
         {
             DBConnection db = new DBConnection();
@@ -45,10 +45,11 @@ namespace Library.Entrance
             }
             else
             {
+
                 DBConnection ndb = new DBConnection();
                 ndb.openConnection();
                 MySqlCommand userCom = new MySqlCommand($"SELECT id_worker FROM worker WHERE email = '{emailParam}'", ndb.getConnection());
-                userId = (int)userCom.ExecuteScalar();
+                workerId = (int)userCom.ExecuteScalar();
 
                 MySqlCommand userC = new MySqlCommand($"SELECT sec_name FROM worker WHERE email = '{emailParam}'", ndb.getConnection());
                 userSecN = (string)userC.ExecuteScalar();
