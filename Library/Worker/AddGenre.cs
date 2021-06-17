@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Library.Worker
 {
-    public partial class AddBook : Form
+    public partial class AddGenre : Form
     {
-        public AddBook()
+        public AddGenre()
         {
             InitializeComponent();
         }

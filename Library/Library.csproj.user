@@ -34,13 +34,16 @@
     <Compile Update="User\ViewGenre.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Worker\AddBook.cs">
+    <Compile Update="Worker\AddAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Worker\BookRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Worker\LendBook.cs">
+    <Compile Update="Worker\AddBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Worker\AddGenre.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Worker\WorkerMain.cs">

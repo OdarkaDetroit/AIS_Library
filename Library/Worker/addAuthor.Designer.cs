@@ -1,7 +1,7 @@
 ﻿
 namespace Library.Worker
 {
-    partial class AddBook
+    partial class addAuthor
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@ namespace Library.Worker
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "AddBookAsBook";
+            this.Text = "addAuthor";
         }
 
         #endregion
