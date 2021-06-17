@@ -139,3 +139,5 @@ C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.User.MyBooks.resources
 C:\Users\dasha\Source\Repos\OdarkaDetroit\Library\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.WorkSignIn.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Entrance.WorkSignIn.resources
 C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.LendBook.resources
+C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.addAuthor.resources
+C:\AIS_Library\Library\obj\Debug\netcoreapp3.1\Library.Worker.AddGenre.resources

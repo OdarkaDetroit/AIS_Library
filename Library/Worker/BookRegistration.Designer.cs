@@ -1,7 +1,7 @@
 ﻿
 namespace Library.Worker
 {
-    partial class AddBook
+    partial class BookRegistration
     {
         /// <summary>
         /// Required designer variable.
