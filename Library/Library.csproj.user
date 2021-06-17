@@ -4,9 +4,6 @@
     <Compile Update="Admin\AdminMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Admin\PriceControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Entrance\SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
