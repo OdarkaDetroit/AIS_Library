@@ -1,7 +1,7 @@
 ﻿
 namespace Library.Worker
 {
-    partial class addAuthor
+    partial class AddAuthor
     {
         /// <summary>
         /// Required designer variable.
