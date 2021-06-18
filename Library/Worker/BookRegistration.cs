@@ -70,10 +70,17 @@ namespace Library.Worker
                     publiser_name as 'Видавництво',
                     publishing_date as 'Дата публікації',
                     pages_num as 'К-сть сторінок',
-                    price as 'Ціна', 
-                    count(id_exemplar) as 'К-сть примірників'
-	                    from book s inner join exemplar ex on s.id_book = ex.fk_book
-                 group by id_book;", db.getConnection()
+                    price as 'Ціна' from book group by id_book;", db.getConnection()
+
+                //@"select id_book, book_name as 'Назва книги',
+                //    publishing_city as 'Місто', 
+                //    publiser_name as 'Видавництво',
+                //    publishing_date as 'Дата публікації',
+                //    pages_num as 'К-сть сторінок',
+                //    price as 'Ціна', 
+                //    count(id_exemplar) as 'К-сть примірників'
+                //     from book s inner join exemplar ex on s.id_book = ex.fk_book
+                // group by id_book;", db.getConnection()
                 );
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
@@ -124,6 +131,12 @@ namespace Library.Worker
         private void itemAdding_Click(object sender, EventArgs e)
         {
             _ = new AddExemplar { Visible = true };
+            Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _ = new WorkerMain { Visible = true };
             Visible = false;
         }
     }

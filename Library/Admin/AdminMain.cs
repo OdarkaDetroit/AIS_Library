@@ -105,14 +105,29 @@ namespace Library.Admin
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter
                 (
-                "SELECT b.id_book, b.book_name AS 'Назва книги', COUNT(*) AS Count " +
-                "FROM(book b INNER JOIN exemplar ex " +
-                "on b.id_book = ex.fk_book) inner join borrowing bo " +
-                "ON bo.ppk_exemplar = ex.id_exemplar " +
+                @"Select *
+                  from book
+                  where id_book not in (
+                      select e.fk_book
+                          from borrowing as b inner join exemplar as e
+                          on b.ppk_exemplar=e.id_exemplar
+                          where (YEAR(CURRENT_DATE) - YEAR(exodused)) -
+                      (DATE_FORMAT(CURRENT_DATE, '%m%d') < DATE_FORMAT(exodused, '%m%d')) <2)
+                      and exists (select * 
+                      from exemplar
+                      where book.id_book=exemplar.fk_book
+                      and id_exemplar not in(
+                        select old_exemp
+                              from changes))", db.getConnection()
 
-                $"where (bo.exodused > NOW()-INTERVAL 2 year) and (bo.exodused < NOW()) " +
-                "GROUP BY b.book_name " +
-                "ORDER BY Count; ", db.getConnection()
+                //"SELECT b.id_book, b.book_name AS 'Назва книги', COUNT(*) AS Count " +
+                //"FROM(book b INNER JOIN exemplar ex " +
+                //"on b.id_book = ex.fk_book) inner join borrowing bo " +
+                //"ON bo.ppk_exemplar = ex.id_exemplar " +
+
+                //$"where (bo.exodused > NOW()-INTERVAL 2 year) and (bo.exodused < NOW()) " +
+                //"GROUP BY b.book_name " +
+                //"ORDER BY Count; ", db.getConnection()
                 );
 
             DataSet dataSet = new DataSet();
