@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Library.Entrance;
 
 using static Library.PasswordManipulations;
+using System.Data.OleDb;
 
 namespace Library
 {
@@ -143,9 +144,30 @@ namespace Library
                     command.Parameters.AddWithValue("@pssw", encodePass);
 
 
-                    MySqlDataReader reader = command.ExecuteReader();
+                    //MySqlDataReader reader = command.ExecuteReader();
 
-                        MessageBox.Show("Створено акаунт!");
+                    command.ExecuteNonQuery();
+
+                    ///// trlrphone ading 
+                    ///
+                    var l_n = "";
+                    var cmd = new MySqlCommand(@"SELECT id_reader
+                                              FROM reader WHERE email = '" + textBox9.Text + "'", db.getConnection());
+                    MySqlDataReader reader2 = cmd.ExecuteReader();
+                    while (reader2.Read())
+                        l_n += reader2.GetInt32(0);
+                    reader2.Close();
+                    
+                        var ph = textBox11.Text.Replace(" ", "").Split(',');
+                    foreach (string ph1 in ph)
+                    {
+                        cmd = new MySqlCommand(
+                            "INSERT INTO telephones (telenum, fk_reader) " +
+                            "VALUES ('" + ph1 + "'," + l_n + ")", db.getConnection());
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Створено акаунт!");
 
                             _ = new UserMain { Visible = true };
                             Visible = false;
