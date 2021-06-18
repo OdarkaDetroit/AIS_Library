@@ -61,7 +61,7 @@ namespace Library.Worker
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(186, 80);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Зареєструвати книгу";
+            this.button2.Text = "Реєстрація\r\nкниги";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -90,22 +90,24 @@ namespace Library.Worker
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button3.Location = new System.Drawing.Point(30, 536);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(186, 80);
             this.button3.TabIndex = 5;
             this.button3.Text = "Загублення";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button1.Location = new System.Drawing.Point(30, 405);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(186, 80);
             this.button1.TabIndex = 4;
             this.button1.Text = "Повернення\r\nабо зміна терміну";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lendingBook
