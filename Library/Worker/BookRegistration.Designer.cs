@@ -38,18 +38,15 @@ namespace Library.Worker
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.authorAdding = new System.Windows.Forms.Button();
-            this.authorEdit = new System.Windows.Forms.Button();
-            this.genreEdit = new System.Windows.Forms.Button();
             this.genreAdding = new System.Windows.Forms.Button();
-            this.bookEdit = new System.Windows.Forms.Button();
             this.bookAdding = new System.Windows.Forms.Button();
-            this.itemEdit = new System.Windows.Forms.Button();
             this.itemAdding = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.allItems = new System.Windows.Forms.Button();
             this.allBooks = new System.Windows.Forms.Button();
             this.allGenres = new System.Windows.Forms.Button();
             this.allAuthors = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.genreGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookGrid)).BeginInit();
@@ -156,26 +153,6 @@ namespace Library.Worker
             this.authorAdding.UseVisualStyleBackColor = false;
             this.authorAdding.Click += new System.EventHandler(this.authorAdding_Click);
             // 
-            // authorEdit
-            // 
-            this.authorEdit.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.authorEdit.Location = new System.Drawing.Point(170, 271);
-            this.authorEdit.Name = "authorEdit";
-            this.authorEdit.Size = new System.Drawing.Size(129, 29);
-            this.authorEdit.TabIndex = 10;
-            this.authorEdit.Text = "Редагувати автора";
-            this.authorEdit.UseVisualStyleBackColor = false;
-            // 
-            // genreEdit
-            // 
-            this.genreEdit.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.genreEdit.Location = new System.Drawing.Point(786, 271);
-            this.genreEdit.Name = "genreEdit";
-            this.genreEdit.Size = new System.Drawing.Size(153, 29);
-            this.genreEdit.TabIndex = 12;
-            this.genreEdit.Text = "Редагувати автора";
-            this.genreEdit.UseVisualStyleBackColor = false;
-            // 
             // genreAdding
             // 
             this.genreAdding.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -187,16 +164,6 @@ namespace Library.Worker
             this.genreAdding.UseVisualStyleBackColor = false;
             this.genreAdding.Click += new System.EventHandler(this.genreAdding_Click);
             // 
-            // bookEdit
-            // 
-            this.bookEdit.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bookEdit.Location = new System.Drawing.Point(170, 567);
-            this.bookEdit.Name = "bookEdit";
-            this.bookEdit.Size = new System.Drawing.Size(155, 29);
-            this.bookEdit.TabIndex = 14;
-            this.bookEdit.Text = "Редагувати книгу";
-            this.bookEdit.UseVisualStyleBackColor = false;
-            // 
             // bookAdding
             // 
             this.bookAdding.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -207,16 +174,6 @@ namespace Library.Worker
             this.bookAdding.Text = "Додати книгу";
             this.bookAdding.UseVisualStyleBackColor = false;
             this.bookAdding.Click += new System.EventHandler(this.bookAdding_Click);
-            // 
-            // itemEdit
-            // 
-            this.itemEdit.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.itemEdit.Location = new System.Drawing.Point(826, 567);
-            this.itemEdit.Name = "itemEdit";
-            this.itemEdit.Size = new System.Drawing.Size(188, 29);
-            this.itemEdit.TabIndex = 16;
-            this.itemEdit.Text = "Редагувати примірник";
-            this.itemEdit.UseVisualStyleBackColor = false;
             // 
             // itemAdding
             // 
@@ -244,9 +201,9 @@ namespace Library.Worker
             // allItems
             // 
             this.allItems.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.allItems.Location = new System.Drawing.Point(1022, 554);
+            this.allItems.Location = new System.Drawing.Point(812, 554);
             this.allItems.Name = "allItems";
-            this.allItems.Size = new System.Drawing.Size(129, 29);
+            this.allItems.Size = new System.Drawing.Size(158, 29);
             this.allItems.TabIndex = 21;
             this.allItems.Text = "Оновити таблицю";
             this.allItems.UseVisualStyleBackColor = false;
@@ -255,9 +212,9 @@ namespace Library.Worker
             // allBooks
             // 
             this.allBooks.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.allBooks.Location = new System.Drawing.Point(332, 554);
+            this.allBooks.Location = new System.Drawing.Point(157, 554);
             this.allBooks.Name = "allBooks";
-            this.allBooks.Size = new System.Drawing.Size(129, 29);
+            this.allBooks.Size = new System.Drawing.Size(156, 29);
             this.allBooks.TabIndex = 20;
             this.allBooks.Text = "Оновити таблицю";
             this.allBooks.UseVisualStyleBackColor = false;
@@ -266,9 +223,9 @@ namespace Library.Worker
             // allGenres
             // 
             this.allGenres.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.allGenres.Location = new System.Drawing.Point(944, 258);
+            this.allGenres.Location = new System.Drawing.Point(772, 258);
             this.allGenres.Name = "allGenres";
-            this.allGenres.Size = new System.Drawing.Size(129, 29);
+            this.allGenres.Size = new System.Drawing.Size(163, 29);
             this.allGenres.TabIndex = 19;
             this.allGenres.Text = "Оновити таблицю";
             this.allGenres.UseVisualStyleBackColor = false;
@@ -277,26 +234,34 @@ namespace Library.Worker
             // allAuthors
             // 
             this.allAuthors.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.allAuthors.Location = new System.Drawing.Point(306, 258);
+            this.allAuthors.Location = new System.Drawing.Point(157, 258);
             this.allAuthors.Name = "allAuthors";
-            this.allAuthors.Size = new System.Drawing.Size(129, 29);
+            this.allAuthors.Size = new System.Drawing.Size(156, 29);
             this.allAuthors.TabIndex = 18;
             this.allAuthors.Text = "Оновити таблицю";
             this.allAuthors.UseVisualStyleBackColor = false;
             this.allAuthors.Click += new System.EventHandler(this.allAuthors_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(557, 640);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(129, 29);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Меню";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BookRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 641);
-            this.Controls.Add(this.itemEdit);
+            this.ClientSize = new System.Drawing.Size(1258, 681);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.itemAdding);
-            this.Controls.Add(this.bookEdit);
             this.Controls.Add(this.bookAdding);
-            this.Controls.Add(this.genreEdit);
             this.Controls.Add(this.genreAdding);
-            this.Controls.Add(this.authorEdit);
             this.Controls.Add(this.authorAdding);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -330,17 +295,14 @@ namespace Library.Worker
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button authorAdding;
-        private System.Windows.Forms.Button authorEdit;
-        private System.Windows.Forms.Button genreEdit;
         private System.Windows.Forms.Button genreAdding;
-        private System.Windows.Forms.Button bookEdit;
         private System.Windows.Forms.Button bookAdding;
-        private System.Windows.Forms.Button itemEdit;
         private System.Windows.Forms.Button itemAdding;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button allAuthors;
         private System.Windows.Forms.Button allItems;
         private System.Windows.Forms.Button allBooks;
         private System.Windows.Forms.Button allGenres;
+        private System.Windows.Forms.Button button1;
     }
 }

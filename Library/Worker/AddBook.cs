@@ -21,6 +21,32 @@ namespace Library.Worker
         public AddBook()
         {
             InitializeComponent();
+
+            DBConnection db = new DBConnection();
+
+            // отримання значень з таблиці "system_catalogue"
+            string query = "SELECT * FROM authors";
+            string queryBook = "SELECT * FROM system_catalogue";
+
+            MySqlCommand sqlCommand = new MySqlCommand(query, db.getConnection());
+            MySqlCommand sqlCommandGenre = new MySqlCommand(queryBook, db.getConnection());
+
+            db.openConnection();
+
+            MySqlDataAdapter sdr = new MySqlDataAdapter(sqlCommand);
+            MySqlDataAdapter sdrBook = new MySqlDataAdapter(sqlCommandGenre);
+            DataTable dt = new DataTable();
+            DataTable dtBook = new DataTable();
+            sdr.Fill(dt);
+            sdrBook.Fill(dtBook);
+
+            // обираємо колонку з необхідними даними
+            authorsComboBox.DataSource = dt;
+            authorsComboBox.ValueMember = "second_name";
+            genresComboBox.DataSource = dtBook;
+            genresComboBox.ValueMember = "id_catalogue";
+
+            db.closeConnection();
         }
 
 
@@ -46,7 +72,55 @@ namespace Library.Worker
         }
 
 
-        public Boolean CheckGenreExistence()
+        public Boolean CheckAuthConnectionExistence()
+        {
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            int id = int.Parse(textBox6.Text);
+            String auth = authorsComboBox.SelectedValue.ToString();
+
+            MySqlCommand sqlCom2 = new MySqlCommand
+                (
+                $"SELECT * FROM author_book_connect WHERE ppk_book = {id} AND " +
+                $"ppk_author = '{auth}';", db.getConnection()
+                );
+            MySqlDataReader reader = sqlCom2.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                return true;
+            }
+            else { return false; }
+
+            db.closeConnection();
+        }
+
+        public Boolean CheckGenreConnectionExistence()
+        {
+            DBConnection db = new DBConnection();
+            db.openConnection();
+
+            int id = int.Parse(textBox6.Text);
+            String auth = genresComboBox.SelectedValue.ToString();
+
+            MySqlCommand sqlCom2 = new MySqlCommand
+                (
+                $"SELECT * FROM author_book_connect WHERE ppk_book = {id} AND " +
+                $"ppk_author = " + int.Parse(auth) + ";", db.getConnection()
+                );
+            MySqlDataReader reader = sqlCom2.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                return true;
+            }
+            else { return false; }
+
+            db.closeConnection();
+        }
+
+        public Boolean CheckBookExistence()
         {
             DBConnection db = new DBConnection();
             db.openConnection();
@@ -75,7 +149,6 @@ namespace Library.Worker
         }
 
 
-
         // add button
         private void button2_Click(object sender, EventArgs e)
         {
@@ -90,7 +163,7 @@ namespace Library.Worker
             decimal price = decimal.Parse(textBox5.Text, CultureInfo.InvariantCulture);
             int year = dateTimePicker1.Value.Year;
 
-            if (CheckGenreExistence())
+            if (CheckBookExistence())
             {
                 MessageBox.Show("Така книга вже існує!");
             }
@@ -132,53 +205,57 @@ namespace Library.Worker
         private void button3_Click(object sender, EventArgs e)
         {
             int id = int.Parse(textBox6.Text);
+            String auth = authorsComboBox.SelectedValue.ToString();
 
             DBConnection db = new DBConnection();
             db.openConnection();
 
-            var authors = authorsComboBox.Text.Replace(" ", "").Split(',');
-
-
-            //check if author in database
-            foreach (string author in authors)
+            if (CheckAuthConnectionExistence())
             {
-                //string l_n = "";
-                //MySqlCommand command1 =
-                //            new MySqlCommand(@"SELECT second_name FROM authors WHERE second_name = '" + author + "'", db.getConnection());
-                //MySqlDataReader reader1 = command1.ExecuteReader();
-
-                //while (reader1.Read())
-                //    l_n += reader1.GetString(0);
-                //if (l_n != "")
-                //{
+                MessageBox.Show("В цієї книги вже є такий автор!");
+            }
+            else
+            {
                 MySqlCommand command1 = new MySqlCommand(
-                        "INSERT INTO author_book_connect (ppk_book, ppk_author) " +
-                        "VALUES ('" + id + "','" + author + "')", db.getConnection());
-                    command1.ExecuteNonQuery();
-                //}
+            "INSERT INTO author_book_connect (ppk_book, ppk_author) " +
+            "VALUES ('" + id + "','" + int.Parse(auth) + "')", db.getConnection());
+                command1.ExecuteNonQuery();
+
+                MessageBox.Show("Автора додано до книги!");
             }
 
             db.closeConnection();
         }
 
+        //private int GenreToId(string a)
+        //{
+        //    string s_n = "SELECT id_catalogue FROM system_catalogue WHERE catalogue_name = '" + a + "';";
+
+        //    return int.Parse(s_n);
+        //}
+
         private void button4_Click(object sender, EventArgs e)
         {
             int id = int.Parse(textBox6.Text);
+            String genre = genresComboBox.SelectedValue.ToString();
 
-            DBConnection db = new DBConnection();
-            db.openConnection();
+            DBConnection db1 = new DBConnection();
+            db1.openConnection();
 
-            var genres = genresComboBox.Text.Replace(" ", "").Split(',');
-
-            foreach (string genre in genres)
+            if (CheckGenreConnectionExistence())
+            { 
+                MessageBox.Show("Цей жанр вже відповідає даній книзі!"); 
+            }
+            else
             {
                 MySqlCommand command1 = new MySqlCommand(
-                        "INSERT INTO book_catalogue_connet (id_book, id_catalogue) " +
-                        "VALUES ('" + id + "','" + genre + "')", db.getConnection());
+            "INSERT INTO book_catalogue_connet (id_book, id_catalogue) " +
+            "VALUES ('" + id + "', '" + genre + "')", db1.getConnection());
                 command1.ExecuteNonQuery();
-                //}
+                MessageBox.Show("Жанр додано!");
             }
-            db.closeConnection();
+
+            db1.closeConnection();
         }
     }
 }
