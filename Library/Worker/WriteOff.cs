@@ -117,7 +117,7 @@ namespace Library.Worker
                     " publiser_name, publishing_date, pages_num, price" +
                     " From exemplar inner join book" +
                     " on fk_book=id_book" +
-                    $" where id_book='{idB}' and id_exemplar not in( select old_exemp from changes)", db.getConnection());
+                    $" where id_book='{idB}' and id_exemplar not in( select old_exemp from changes) and id_exemplar not in ( select ppk_exemplar from borrowing where real_return is null)", db.getConnection());
 
                 DataSet dataSet = new DataSet();
                 dataAdapter.Fill(dataSet);
@@ -127,7 +127,7 @@ namespace Library.Worker
                 MySqlCommand authorCom = new MySqlCommand(" Select book_name " +
                     " From exemplar inner join book" +
                     " on fk_book=id_book" +
-                    $" where id_book='{idB}' and id_exemplar not in( select old_exemp from changes)", db.getConnection());
+                    $" where id_book='{idB}' and id_exemplar not in( select old_exemp from changes) and id_exemplar not in ( select ppk_exemplar from borrowing where real_return is null)", db.getConnection());
                 string authorcheck = (string)authorCom.ExecuteScalar();
 
                 if (authorcheck == null)

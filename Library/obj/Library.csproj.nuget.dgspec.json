@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\Library.csproj": {}
+    "C:\\AIS_Library\\Library\\Library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\Library.csproj": {
+    "C:\\AIS_Library\\Library\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\Library.csproj",
+        "projectUniqueName": "C:\\AIS_Library\\Library\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\Library.csproj",
-        "packagesPath": "C:\\Users\\dasha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dasha\\Source\\Repos\\OdarkaDetroit\\Library\\AIS_Library\\Library\\obj\\",
+        "projectPath": "C:\\AIS_Library\\Library\\Library.csproj",
+        "packagesPath": "C:\\Users\\Владелец\\.nuget\\packages\\",
+        "outputPath": "C:\\AIS_Library\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dasha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Владелец\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,7 +71,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
